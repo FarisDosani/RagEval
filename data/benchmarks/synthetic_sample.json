@@ -1,0 +1,29 @@
+[
+  {
+    "question_id": "synthetic_001",
+    "question": "In this synthetic example, the fictional library opens at 09:00. At what time does it open?",
+    "ground_truth": "09:00",
+    "answerable": true,
+    "relevant_chunk_ids": [],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "synthetic_002",
+    "question": "In this synthetic example, a blue token is worth 2 points and a red token is worth 3 points. How many points are they worth together?",
+    "ground_truth": "5 points",
+    "answerable": true,
+    "relevant_chunk_ids": [],
+    "category": "reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "synthetic_003",
+    "question": "What is the fictional library director's name? No director is identified in this synthetic example.",
+    "ground_truth": null,
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  }
+]
