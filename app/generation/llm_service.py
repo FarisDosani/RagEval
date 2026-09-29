@@ -10,6 +10,10 @@ class LLMError(RuntimeError):
     """The configured LLM failed to return a complete text response."""
 
 
+class LLMEmptyResponseError(LLMError):
+    """A completed response contained only empty or whitespace text."""
+
+
 @dataclass(frozen=True)
 class LLMConfig:
     base_url: str
@@ -57,8 +61,10 @@ class LLMService:
         content = choice.message.content
         if choice.finish_reason != "stop":
             raise LLMError("LLM response did not finish with a complete text answer")
-        if not isinstance(content, str) or not content.strip():
+        if not isinstance(content, str):
             raise LLMError("LLM response contained no assistant text")
+        if not content.strip():
+            raise LLMEmptyResponseError("LLM response contained no assistant text")
         return content.strip()
 
     def close(self) -> None:
