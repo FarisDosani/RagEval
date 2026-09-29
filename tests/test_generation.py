@@ -300,3 +300,13 @@ def test_parsed_sdk_response_usage_extensions(external_boundaries):
     result = LLMService().generate_result("system", "user")
     assert result.total_tokens == 5 and result.cost == 0.02
     assert result.model == "test-model"
+
+
+def test_generate_from_selected_chunks_does_not_retrieve(external_boundaries):
+    store = Mock()
+    pipeline = RAGPipeline(store)
+    result = pipeline.generate_from_chunks("Original question", [retrieved()])
+    assert result.question == "Original question"
+    assert result.answer == "Supported answer."
+    store.search_text.assert_not_called()
+    assert json.loads(external_boundaries.return_value.chat.completions.create.call_args.kwargs["messages"][1]["content"])["question"] == "Original question"

@@ -5,6 +5,7 @@ from app.generation.llm_service import LLMService
 from app.generation.prompts import INSUFFICIENT_INFORMATION, SYSTEM_PROMPT, build_user_prompt
 from app.retrieval import VectorStore
 from app.schemas.generation import Citation, GenerationUsage, RAGResponse
+from app.schemas.retrieval import RetrievalResult
 
 
 class RAGPipeline:
@@ -34,6 +35,14 @@ class RAGPipeline:
         chunks = self.vector_store.search_text(
             question, top_k=top_k, service=self.embedding_service
         )
+        response = self.generate_from_chunks(question, chunks)
+        return response.model_copy(update={"latency_ms": (perf_counter() - started) * 1000})
+
+    def generate_from_chunks(self, question: str, chunks: list[RetrievalResult]) -> RAGResponse:
+        """Generate from selected evidence without retrieving again."""
+        started = perf_counter()
+        if not isinstance(question, str) or not question.strip():
+            raise ValueError("question must be a non-empty string")
         answer = INSUFFICIENT_INFORMATION
         model = self.llm.model
         usage = GenerationUsage(latency_ms=0.0, prompt_tokens=0, completion_tokens=0, total_tokens=0, cost=0.0)
