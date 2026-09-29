@@ -4,7 +4,7 @@ from app.embeddings.embedding_service import EmbeddingService
 from app.generation.llm_service import LLMService
 from app.generation.prompts import INSUFFICIENT_INFORMATION, SYSTEM_PROMPT, build_user_prompt
 from app.retrieval import VectorStore
-from app.schemas.generation import Citation, RAGResponse
+from app.schemas.generation import Citation, GenerationUsage, RAGResponse
 
 
 class RAGPipeline:
@@ -12,7 +12,9 @@ class RAGPipeline:
 
     Supply a matching embedding service for stores built with a custom model.
     Citations list context sources; they do not assert claim-level support.
-    The model field records the configured model even when no LLM call occurs.
+    The model field records the response model, or configured model when absent.
+    No-context responses have zero provider usage; total latency still includes
+    retrieval/local processing and may be nonzero.
     """
 
     def __init__(
@@ -33,14 +35,19 @@ class RAGPipeline:
             question, top_k=top_k, service=self.embedding_service
         )
         answer = INSUFFICIENT_INFORMATION
+        model = self.llm.model
+        usage = GenerationUsage(latency_ms=0.0, prompt_tokens=0, completion_tokens=0, total_tokens=0, cost=0.0)
         if chunks:
-            answer = self.llm.generate(SYSTEM_PROMPT, build_user_prompt(question, chunks))
+            generation = self.llm.generate_result(SYSTEM_PROMPT, build_user_prompt(question, chunks))
+            answer = generation.text
+            model = generation.model
+            usage = GenerationUsage(**generation.model_dump(exclude={"text", "model"}))
         citations = [] if answer == INSUFFICIENT_INFORMATION else [
             Citation(chunk_id=chunk.chunk_id, source=chunk.source, page_number=chunk.page_number)
             for chunk in chunks
         ]
         return RAGResponse(
             question=question, answer=answer, citations=citations,
-            retrieved_chunks=chunks, model=self.llm.model,
+            retrieved_chunks=chunks, model=model, usage=usage,
             latency_ms=(perf_counter() - started) * 1000,
         )

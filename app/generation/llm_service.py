@@ -1,9 +1,28 @@
 import os
+from math import isfinite
 from dataclasses import dataclass, field
 from pathlib import Path
+from time import perf_counter
 
 from dotenv import dotenv_values
 from openai import OpenAI, OpenAIError
+
+from app.schemas.generation import LLMGenerationResult
+
+
+def _field(value, name):
+    return value.get(name) if isinstance(value, dict) else getattr(value, name, None)
+
+
+def _tokens(usage, name: str) -> int | None:
+    value = _field(usage, name)
+    return value if type(value) is int and value >= 0 else None
+
+
+def _cost(value) -> float | None:
+    if type(value) in (int, float) and isfinite(value) and value >= 0:
+        return float(value)
+    return None
 
 
 class LLMError(RuntimeError):
@@ -44,6 +63,17 @@ class LLMService:
         )
 
     def generate(self, system_prompt: str, user_prompt: str) -> str:
+        """Backward-compatible text-only interface."""
+        return self.generate_result(system_prompt, user_prompt).text
+
+    def generate_result(self, system_prompt: str, user_prompt: str) -> LLMGenerationResult:
+        """Return text and per-call metadata without shared last-response state.
+
+        Model uses the parsed response name when present, otherwise the configured
+        name. Cost reads only numeric parsed usage.cost or response.cost (in that
+        order). Missing/invalid metadata stays None; totals are never inferred.
+        """
+        started = perf_counter()
         try:
             response = self._client.chat.completions.create(
                 model=self.model,
@@ -55,6 +85,7 @@ class LLMService:
             )
         except OpenAIError as exc:
             raise LLMError("LLM chat completion request failed") from exc
+        elapsed_ms = (perf_counter() - started) * 1000
         if not response.choices:
             raise LLMError("LLM response contained no choices")
         choice = response.choices[0]
@@ -65,7 +96,17 @@ class LLMService:
             raise LLMError("LLM response contained no assistant text")
         if not content.strip():
             raise LLMEmptyResponseError("LLM response contained no assistant text")
-        return content.strip()
+        usage = _field(response, "usage")
+        cost = _cost(_field(usage, "cost"))
+        if cost is None:
+            cost = _cost(_field(response, "cost"))
+        model = _field(response, "model")
+        return LLMGenerationResult(
+            text=content.strip(), model=model if isinstance(model, str) and model.strip() else self.model,
+            latency_ms=elapsed_ms, prompt_tokens=_tokens(usage, "prompt_tokens"),
+            completion_tokens=_tokens(usage, "completion_tokens"), total_tokens=_tokens(usage, "total_tokens"),
+            cost=cost,
+        )
 
     def close(self) -> None:
         self._client.close()

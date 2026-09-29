@@ -194,6 +194,109 @@ def test_pipeline_propagates_llm_errors():
     store = Mock()
     store.search_text.return_value = [retrieved()]
     llm = Mock()
-    llm.generate.side_effect = LLMError("request failed")
+    llm.generate_result.side_effect = LLMError("request failed")
     with pytest.raises(LLMError, match="request failed"):
         RAGPipeline(store, llm_service=llm).ask("Question")
+
+
+def test_generation_metadata_and_monotonic_latency(external_boundaries, monkeypatch):
+    response = completion()
+    response.usage = SimpleNamespace(prompt_tokens=11, completion_tokens=7, total_tokens=18, cost=0.012)
+    response.model = "reported-model"
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    monkeypatch.setattr(llm_service, "perf_counter", Mock(side_effect=[10.0, 10.125]))
+    result = LLMService().generate_result("system", "user")
+    assert result.text == "Supported answer."
+    assert result.latency_ms == 125.0
+    assert (result.prompt_tokens, result.completion_tokens, result.total_tokens) == (11, 7, 18)
+    assert result.cost == 0.012
+    assert result.model == "reported-model"
+
+
+@pytest.mark.parametrize("usage,expected", [
+    (None, (None, None, None)),
+    (SimpleNamespace(prompt_tokens=8), (8, None, None)),
+    ({"completion_tokens": 4}, (None, 4, None)),
+    ({"prompt_tokens": 8, "completion_tokens": 4}, (8, 4, None)),
+    ({"total_tokens": 12}, (None, None, 12)),
+    ({"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}, (0, 0, 0)),
+    ({"prompt_tokens": True, "completion_tokens": -1, "total_tokens": "12"}, (None, None, None)),
+])
+def test_partial_missing_or_invalid_usage(external_boundaries, usage, expected):
+    response = completion()
+    response.usage = usage
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    result = LLMService().generate_result("system", "user")
+    assert (result.prompt_tokens, result.completion_tokens, result.total_tokens) == expected
+    assert result.model == CONFIG["LLM_MODEL"]
+    assert result.cost is None
+
+
+@pytest.mark.parametrize("cost,expected", [(0.0, 0.0), (0.03, 0.03), (None, None), (-1, None), (True, None), (float("nan"), None), ("0.03", None)])
+def test_parsed_response_cost(external_boundaries, cost, expected):
+    response = completion()
+    response.cost = cost
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    assert LLMService().generate_result("system", "user").cost == expected
+
+
+def test_usage_does_not_leak_between_calls(external_boundaries):
+    first = completion()
+    first.usage = SimpleNamespace(prompt_tokens=5, completion_tokens=2, total_tokens=7, cost=0.01)
+    external_boundaries.return_value.chat.completions.create.side_effect = [first, completion()]
+    service = LLMService()
+    one = service.generate_result("system", "user")
+    two = service.generate_result("system", "user")
+    assert one.total_tokens == 7
+    assert two.total_tokens is None and two.cost is None
+    external_boundaries.assert_called_once()
+
+
+def test_pipeline_usage_and_no_context_reset(external_boundaries):
+    response = completion()
+    response.usage = SimpleNamespace(prompt_tokens=5, completion_tokens=2, total_tokens=7)
+    response.cost = 0.01
+    response.model = "reported-model"
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    store = Mock()
+    store.search_text.side_effect = [[retrieved()], []]
+    pipeline = RAGPipeline(store)
+    first = pipeline.ask("Question")
+    assert first.model == "reported-model"
+    assert first.usage.prompt_tokens == 5
+    assert first.usage.completion_tokens == 2
+    assert first.usage.total_tokens == 7
+    assert first.usage.cost == 0.01
+    assert first.latency_ms >= first.usage.latency_ms >= 0
+    empty = pipeline.ask("Question")
+    assert empty.model == CONFIG["LLM_MODEL"]
+    assert empty.usage.model_dump() == {
+        "latency_ms": 0.0, "prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0, "cost": 0.0,
+    }
+    external_boundaries.return_value.chat.completions.create.assert_called_once()
+
+
+def test_provider_refusal_still_records_usage(external_boundaries):
+    response = completion(INSUFFICIENT_INFORMATION)
+    response.usage = {"prompt_tokens": 3, "completion_tokens": 5, "total_tokens": 8}
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    store = Mock()
+    store.search_text.return_value = [retrieved()]
+    result = RAGPipeline(store).ask("Question")
+    assert result.answer == INSUFFICIENT_INFORMATION
+    assert result.usage.total_tokens == 8
+    assert result.usage.cost is None
+
+
+def test_parsed_sdk_response_usage_extensions(external_boundaries):
+    from openai.types.chat import ChatCompletion
+
+    response = ChatCompletion.model_validate({
+        "id": "mock", "created": 0, "object": "chat.completion", "model": "test-model",
+        "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant", "content": "Answer"}}],
+        "usage": {"prompt_tokens": 3, "completion_tokens": 2, "total_tokens": 5, "cost": 0.02},
+    })
+    external_boundaries.return_value.chat.completions.create.return_value = response
+    result = LLMService().generate_result("system", "user")
+    assert result.total_tokens == 5 and result.cost == 0.02
+    assert result.model == "test-model"
