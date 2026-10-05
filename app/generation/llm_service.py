@@ -28,6 +28,10 @@ def _cost(value) -> float | None:
 class LLMError(RuntimeError):
     """The configured LLM failed to return a complete text response."""
 
+    def __init__(self, message, *, diagnostics=None):
+        super().__init__(message)
+        self.diagnostics = diagnostics or {}
+
 
 class LLMEmptyResponseError(LLMError):
     """A completed response contained only empty or whitespace text."""
@@ -38,26 +42,37 @@ class LLMConfig:
     base_url: str
     api_key: str = field(repr=False)
     model: str
+    provider: str = "openai"
 
     @classmethod
     def from_env(cls, env_path: str | Path | None = None) -> "LLMConfig":
         """Read project .env without changing process state; environment wins."""
         path = Path(env_path) if env_path is not None else Path(__file__).resolve().parents[2] / ".env"
         values = dotenv_values(path, interpolate=False)
-        names = ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL")
+        provider = (os.environ.get("LLM_PROVIDER", values.get("LLM_PROVIDER")) or "openai").strip().lower()
+        if provider not in ("openai", "gemini"):
+            raise ValueError("LLM_PROVIDER must be openai or gemini")
+        names = ("GEMINI_API_KEY", "GEMINI_MODEL") if provider == "gemini" else ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL")
         settings = {name: (os.environ.get(name, values.get(name)) or "").strip() for name in names}
         missing = [name for name, value in settings.items() if not value]
         if missing:
             raise ValueError("Missing LLM configuration: " + ", ".join(missing))
+        if provider == "gemini":
+            return cls("https://generativelanguage.googleapis.com/v1beta/", settings[names[0]], settings[names[1]], provider)
         return cls(*(settings[name] for name in names))
 
 
 class LLMService:
-    """One reusable OpenAI-compatible client, configured for the local gateway."""
+    """Provider-neutral interface over reusable, non-streaming transports."""
 
     def __init__(self):
         config = LLMConfig.from_env()
         self.model = config.model
+        self.provider = config.provider
+        if config.provider == "gemini":
+            from app.generation.gemini_transport import GeminiTransport
+            self._client = GeminiTransport(config)
+            return
         self._client = OpenAI(
             base_url=config.base_url, api_key=config.api_key, timeout=60.0, max_retries=0
         )
@@ -73,6 +88,8 @@ class LLMService:
         name. Cost reads only numeric parsed usage.cost or response.cost (in that
         order). Missing/invalid metadata stays None; totals are never inferred.
         """
+        if self.provider == "gemini":
+            return self._client.generate_result(system_prompt, user_prompt)
         started = perf_counter()
         try:
             response = self._client.chat.completions.create(

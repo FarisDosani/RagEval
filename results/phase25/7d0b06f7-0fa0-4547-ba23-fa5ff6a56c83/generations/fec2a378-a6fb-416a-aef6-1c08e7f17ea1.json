@@ -1,0 +1,93 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_hybrid",
+  "evaluator": "generation",
+  "question_id": "ca_small_012",
+  "result": {
+    "question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+    "answer": "A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 24
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 36
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 24,
+        "text": "ENERGY AND ENERGY EFFICIENCY A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "chunk_index": 20,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 0.03225806451612903
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 36,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Race-to-halt • Processor is only part of system cost • Use faster, less energy-efficient processor to allow the rest of the system to halt",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+        "chunk_index": 32,
+        "score": 0.031024531024531024
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32,
+        "text": "ENERGY EFFICIENCY STRATEGIES • 2. Dynamic voltage and frequency scaling (DVFS) is the adjustment of power and speed settings on a computing device's various processors, controller chips and peripheral devices to optimize resource allotment for tasks and maximize power saving when those resources are not needed. • If the current task is computationally intensive, meaning it requires the processor to consume more energy and run at a higher frequency, DVFS will ensure that the voltage and frequency increase to match the requirements. However,if the processor needs to run a low-priority or less computationally intensive task where high speed and throughput are not required,it will adjust accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "chunk_index": 28,
+        "score": 0.029571646010002173
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 0.029513888888888888
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 961.3505999877816,
+    "usage": {
+      "latency_ms": 936.6818999988027,
+      "prompt_tokens": 962,
+      "completion_tokens": 21,
+      "total_tokens": 983,
+      "cost": null
+    }
+  }
+}

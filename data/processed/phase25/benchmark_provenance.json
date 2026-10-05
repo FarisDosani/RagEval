@@ -1,0 +1,260 @@
+[
+  {
+    "question_id": "ca_small_001",
+    "support_pages": [
+      3
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2"
+    ]
+  },
+  {
+    "question_id": "ca_small_002",
+    "support_pages": [
+      9
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7"
+    ]
+  },
+  {
+    "question_id": "ca_small_003",
+    "support_pages": [
+      9,
+      10
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8"
+    ]
+  },
+  {
+    "question_id": "ca_small_004",
+    "support_pages": [
+      8
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6"
+    ]
+  },
+  {
+    "question_id": "ca_small_005",
+    "support_pages": [
+      11
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_9"
+    ]
+  },
+  {
+    "question_id": "ca_small_006",
+    "support_pages": [
+      12
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_10"
+    ]
+  },
+  {
+    "question_id": "ca_small_007",
+    "support_pages": [
+      15
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13"
+    ]
+  },
+  {
+    "question_id": "ca_small_008",
+    "support_pages": [
+      17
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14"
+    ]
+  },
+  {
+    "question_id": "ca_small_009",
+    "support_pages": [
+      18
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15"
+    ]
+  },
+  {
+    "question_id": "ca_small_010",
+    "support_pages": [
+      19
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16"
+    ]
+  },
+  {
+    "question_id": "ca_small_011",
+    "support_pages": [
+      22
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_18"
+    ]
+  },
+  {
+    "question_id": "ca_small_012",
+    "support_pages": [
+      23,
+      24
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20"
+    ]
+  },
+  {
+    "question_id": "ca_small_013",
+    "support_pages": [
+      25
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21"
+    ]
+  },
+  {
+    "question_id": "ca_small_014",
+    "support_pages": [
+      26
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22"
+    ]
+  },
+  {
+    "question_id": "ca_small_015",
+    "support_pages": [
+      25
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21"
+    ]
+  },
+  {
+    "question_id": "ca_small_016",
+    "support_pages": [
+      25,
+      26,
+      27
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23"
+    ]
+  },
+  {
+    "question_id": "ca_small_017",
+    "support_pages": [
+      30
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_26"
+    ]
+  },
+  {
+    "question_id": "ca_small_018",
+    "support_pages": [
+      31,
+      35
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31"
+    ]
+  },
+  {
+    "question_id": "ca_small_019",
+    "support_pages": [
+      32
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28"
+    ]
+  },
+  {
+    "question_id": "ca_small_020",
+    "support_pages": [
+      34
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30"
+    ]
+  },
+  {
+    "question_id": "ca_small_021",
+    "support_pages": [
+      36
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32"
+    ]
+  },
+  {
+    "question_id": "ca_small_022",
+    "support_pages": [
+      38
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34"
+    ]
+  },
+  {
+    "question_id": "ca_small_023",
+    "support_pages": [
+      38,
+      39
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35"
+    ]
+  },
+  {
+    "question_id": "ca_small_024",
+    "support_pages": [
+      43
+    ],
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38"
+    ]
+  },
+  {
+    "question_id": "ca_small_025",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "question_id": "ca_small_026",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "question_id": "ca_small_027",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "question_id": "ca_small_028",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "question_id": "ca_small_029",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "question_id": "ca_small_030",
+    "support_pages": [],
+    "relevant_chunk_ids": []
+  }
+]

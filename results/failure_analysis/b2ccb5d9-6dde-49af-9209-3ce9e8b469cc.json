@@ -1,0 +1,45 @@
+{
+  "experiment_id": "b2ccb5d9-6dde-49af-9209-3ce9e8b469cc",
+  "questions": [
+    {
+      "question_id": "ca_small_001",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_018",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_025",
+      "failure_categories": [],
+      "notes": []
+    }
+  ],
+  "summary": {
+    "total_questions_analyzed": 3,
+    "questions_with_failures": 0,
+    "failure_free_questions": 3,
+    "category_counts": {
+      "retrieval_miss": 0,
+      "retrieval_low_rank": 0,
+      "generation_incorrect": 0,
+      "generation_ungrounded": 0,
+      "citation_failure": 0,
+      "hallucination": 0,
+      "incorrect_refusal": 0,
+      "failed_refusal": 0
+    },
+    "category_rates": {
+      "retrieval_miss": 0.0,
+      "retrieval_low_rank": 0.0,
+      "generation_incorrect": 0.0,
+      "generation_ungrounded": 0.0,
+      "citation_failure": 0.0,
+      "hallucination": 0.0,
+      "incorrect_refusal": 0.0,
+      "failed_refusal": 0.0
+    }
+  }
+}

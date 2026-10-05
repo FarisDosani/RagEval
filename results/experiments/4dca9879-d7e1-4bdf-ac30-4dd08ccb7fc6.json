@@ -1,0 +1,1384 @@
+{
+  "experiment_id": "4dca9879-d7e1-4bdf-ac30-4dd08ccb7fc6",
+  "timestamp": "2026-10-05T10:36:40.576274Z",
+  "config": {
+    "experiment_name": "ca_small_gemini_subset_dense",
+    "retrieval_strategy": "dense",
+    "top_k": 5,
+    "candidate_k": 20,
+    "reranker_enabled": false,
+    "query_rewrite_enabled": false,
+    "model": "gemini-3.5-flash-lite",
+    "benchmark_name": "ca_small_benchmark",
+    "chunk_size": 512,
+    "recall_k_values": [
+      1,
+      3,
+      5
+    ],
+    "component_metadata": {
+      "provider": "gemini",
+      "corpus_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96",
+      "index_id": "b2091a5a8e130f7d2aa20e9633d988ac04aa0e1e6f9e440ff71247559d7851c2",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "chunk_overlap": "50"
+    }
+  },
+  "config_sha256": "ef465cb0f70987185a9e7e8118115f696489721d36a4c4bfaffa0c9a7b8067d7",
+  "benchmark_sha256": "84d1c64197afcd223dc4fb5486a81494ae29e374f4bf32481f099982c35c6493",
+  "benchmark": [
+    {
+      "question_id": "ca_small_001",
+      "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+      "ground_truth": "Transistor count doubles roughly every two years with a minimal increase in cost.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2"
+      ],
+      "category": "factual",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "ca_small_003",
+      "question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+      "ground_truth": "Latency is the wait before the first result and lower is better. Bandwidth is data transferred per unit time and higher is better.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8"
+      ],
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "ca_small_008",
+      "question": "Does processor power stay constant across idle, normal, heavy, and burst workloads? Describe the stated pattern.",
+      "ground_truth": "No. Power is low when idle, moderate during normal work, high under heavy load, and very high during short bursts.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14"
+      ],
+      "category": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "ca_small_012",
+      "question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+      "ground_truth": "Energy, rather than power alone, is the better task-level comparison. A higher-power processor can be more energy-efficient if it completes the task significantly faster.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20"
+      ],
+      "category": "multi_hop",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "ca_small_015",
+      "question": "With unchanged capacitive load, what fraction of dynamic energy remains after a 15% voltage reduction?",
+      "ground_truth": "Dynamic energy scales with voltage squared, so 0.85 squared = 0.7225, or 72.25%, remains.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21"
+      ],
+      "category": "reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "ca_small_018",
+      "question": "How do clock gating and power gating differ in what they turn off?",
+      "ground_truth": "Clock gating stops the clock to inactive modules or cores; power gating turns off power to inactive modules.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31"
+      ],
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "ca_small_023",
+      "question": "Which transition is a failure, which is a restoration, and how does MTTF relate to reliability?",
+      "ground_truth": "Failure moves from service accomplishment to interruption; restoration moves back. MTTF measures reliability through time to failure or continuous service accomplishment.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35"
+      ],
+      "category": "multi_hop",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "ca_small_024",
+      "question": "If a component has MTTF of one million hours, what failure rate follows from the slides' reciprocal relationship, in failures per hour and FIT?",
+      "ground_truth": "The rate is 1/1,000,000 = 0.000001 failures per hour, equivalent to 1,000 failures per billion hours, or 1,000 FIT.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38"
+      ],
+      "category": "reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": "ca_small_025",
+      "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+      "ground_truth": "Insufficient information in provided sources.",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "category": "unanswerable",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "ca_small_029",
+      "question": "What exact fan rotational speed is prescribed for the example 100 W TDP cooling system?",
+      "ground_truth": "Insufficient information in provided sources.",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "category": "unanswerable",
+      "difficulty": "medium"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "ca_small_001",
+      "original_question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4"
+      ],
+      "generation": {
+        "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+        "answer": "Based on the provided sources, the transistor count doubles roughly every two years (or every 18–24 months), with a minimal increase in cost.",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 4
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 8
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 3
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 6
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 4,
+            "text": "MOORE’S LAW • The mathematical model: • If transistor count doubles every T years: • Where:N0 = initial transistor count • N(t) = transistor count after time t • T = doubling period • t = elapsed time • For Moore's Law: T=2 years",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+            "chunk_index": 3,
+            "score": 0.7574577331542969
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 8,
+            "text": "INTEGRATED CIRCUIT LOGIC TECHNOLOGY • Historically, transistor density increased by about 35% per year, quadrupling somewhat over four years. • Increases in die size are less predictable and slower,ranging from 10% to 20% per year. • The combined effect was a traditional growth rate in transistor count on a chip of about 40%–55% per year,or doubling every 18–24 months. • This trend is popularly known as Moore’s Law.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+            "chunk_index": 6,
+            "score": 0.729011595249176
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 3,
+            "text": "CLASS ACTIVITY • \"If a computer has 5 billion transistors today,how many could it have after 10 years if the transistor count doubles every 2 years?“ Moore’s Law • Moore’s Law is the prediction that the number of transistors on a chip will double roughly every two years, with a minimal increase in cost. • Moore’s Law, created by Gordon Moore before he co-founded Intel, has remained the golden rule for the electronics industry since its 1965 publication. • Moore’s Law only stops when innovation stops, and innovation continues to push forward.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+            "chunk_index": 2,
+            "score": 0.6953333616256714
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 6,
+            "text": "EXERCISE • A chip currently contains 3 billion transistors. Under a two-year doubling rate, after how many years would it theoretically exceed 100 billion transistors?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+            "chunk_index": 5,
+            "score": 0.6084207892417908
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5,
+            "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "chunk_index": 4,
+            "score": 0.5709304213523865
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 1029.806299993652,
+        "usage": {
+          "latency_ms": 1015.2022999973269,
+          "prompt_tokens": 1020,
+          "completion_tokens": 32,
+          "total_tokens": 1052,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 0.3333333333333333,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer accurately captures the doubling interval and cost trend for transistor count under Moore's Law as stated in the ground truth."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The retrieved context explicitly states that Moore's Law predicts the number of transistors doubles roughly every two years (or every 18-24 months) with a minimal increase in cost."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "All generated claims are directly supported by the cited evidence, including the doubling period of every two years (or 18-24 months) and the minimal increase in cost.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "All factual claims in the generated answer are fully supported by the retrieved evidence.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 1063.1095999851823
+    },
+    {
+      "question_id": "ca_small_003",
+      "original_question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_12",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28"
+      ],
+      "generation": {
+        "question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+        "answer": "**Difference:**\n* **Latency** (also called response time) is the time you have to wait before an operation starts producing its result/data, or the time between the start and the completion of an event.\n* **Bandwidth** (also called throughput) is the total amount of work done, or data transferred, in a given time (e.g., megabytes per second).\n\n**Preferable direction of change:**\n* **Latency:** Lower latency is preferable (it means a better/faster response).\n* **Bandwidth:** Higher bandwidth is preferable (it means more data can be transferred per second).",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 9
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 15
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 10
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_12",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 14
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 32
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 9,
+            "text": "LATENCY AND BANDWIDTH • Latency = the time you have to wait before an operation starts producing its result/data. • Latency tells us \"How long do I have to wait?“ • Suppose the CPU requests data from RAM and the first byte of data arrives after 100 ns. • Lower latency = better/faster response.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+            "chunk_index": 7,
+            "score": 0.7373712062835693
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 15,
+            "text": "PERFORMANCE TRENDS: BANDWIDTH OVER LATENCY • Bandwidth or throughput is the total amount of work done in a given time, such as megabytes per second for a disk transfer. • In contrast, latency or response time is the time between the start and the completion of an event, such as milliseconds for a disk access. • A simple rule of thumb is that bandwidth grows by at least the square of the improvement in latency. Computer designers should plan accordingly.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+            "chunk_index": 13,
+            "score": 0.7121397256851196
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 10,
+            "text": "LATENCY AND BANDWIDTH • Bandwidth = the amount of data that can be transferred per unit of time. • Bandwidth tells us \"How much data can I transfer per second?“ • It is usually measured in: MB/s GB/s • Higher bandwidth = more data can be transferred per second.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+            "chunk_index": 8,
+            "score": 0.6752252578735352
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 14,
+            "text": "NETWORK TECHNOLOGY",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_12",
+            "chunk_index": 12,
+            "score": 0.33595654368400574
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 32,
+            "text": "ENERGY EFFICIENCY STRATEGIES • 2. Dynamic voltage and frequency scaling (DVFS) is the adjustment of power and speed settings on a computing device's various processors, controller chips and peripheral devices to optimize resource allotment for tasks and maximize power saving when those resources are not needed. • If the current task is computationally intensive, meaning it requires the processor to consume more energy and run at a higher frequency, DVFS will ensure that the voltage and frequency increase to match the requirements. However,if the processor needs to run a low-priority or less computationally intensive task where high speed and throughput are not required,it will adjust accordingly.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+            "chunk_index": 28,
+            "score": 0.2945363521575928
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 1057.2841999819502,
+        "usage": {
+          "latency_ms": 1046.2364999984857,
+          "prompt_tokens": 993,
+          "completion_tokens": 128,
+          "total_tokens": 1121,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer accurately defines latency and bandwidth according to the ground truth and correctly identifies that lower latency and higher bandwidth are preferable."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "All factual claims regarding the definitions of latency and bandwidth, as well as the preferable direction of change for each, are fully supported by the provided context."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "All generated claims about the definitions and preferable directions of latency and bandwidth are fully supported by the provided evidence chunks.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "All factual claims made in the generated answer are fully supported by the retrieved evidence.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 1068.7502999935532
+    },
+    {
+      "question_id": "ca_small_008",
+      "original_question": "Does processor power stay constant across idle, normal, heavy, and burst workloads? Describe the stated pattern.",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_25"
+      ],
+      "generation": {
+        "question": "Does processor power stay constant across idle, normal, heavy, and burst workloads? Describe the stated pattern.",
+        "answer": "No, processor power does not stay constant. \n\nThe stated pattern is:\n* When the CPU is idle: low power\n* When running normal programs: moderate power\n* When performing heavy calculations: high power\n* During short bursts of activity: very high peak power",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 17
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 19
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 24
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_25",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 29
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "chunk_index": 17,
+            "score": 0.6074115633964539
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 17,
+            "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+            "chunk_index": 14,
+            "score": 0.605239987373352
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 19,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+            "chunk_index": 16,
+            "score": 0.548858642578125
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 24,
+            "text": "ENERGY AND ENERGY EFFICIENCY A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+            "chunk_index": 20,
+            "score": 0.542514979839325
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 29,
+            "text": "POWER • Power consumption increases as processor complexity increases • Number of transistors increases • Switching frequency increases • Early microprocessors consumed about 1W • 80386 microprocessors consumed about 2W • 3.3GHz Intel Core i7 consumes about 130W • Must be dissipated from a chip that is about 1.5cm × 1.5cm",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_25",
+            "chunk_index": 25,
+            "score": 0.5356529951095581
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 894.0857999987202,
+        "usage": {
+          "latency_ms": 883.4828999970341,
+          "prompt_tokens": 918,
+          "completion_tokens": 56,
+          "total_tokens": 974,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 0.5,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer correctly states that processor power does not stay constant and accurately describes the power pattern across idle, normal, heavy, and burst workloads as specified in the ground truth."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "All claims in the generated answer regarding processor power not being constant and the specific power levels across idle, normal, heavy, and burst workloads are directly supported by the retrieved context."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "All claims in the generated answer are directly supported by the provided evidence, specifically chunk_14.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "All factual claims in the generated answer are directly supported by the retrieved evidence.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 907.8041000029771
+    },
+    {
+      "question_id": "ca_small_012",
+      "original_question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15"
+      ],
+      "generation": {
+        "question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+        "answer": "A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 24
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 23
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 36
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 17
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 18
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 24,
+            "text": "ENERGY AND ENERGY EFFICIENCY A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+            "chunk_index": 20,
+            "score": 0.8565127849578857
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 23,
+            "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+            "chunk_index": 19,
+            "score": 0.7549790740013123
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 36,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Race-to-halt • Processor is only part of system cost • Use faster, less energy-efficient processor to allow the rest of the system to halt",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+            "chunk_index": 32,
+            "score": 0.6380699872970581
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 17,
+            "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+            "chunk_index": 14,
+            "score": 0.6216326951980591
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 18,
+            "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? Modern processors can dynamically adjust: • Voltage • Clock frequency • Power consumption CPU State Frequency Voltage Performance Power Low- power 2.0 GHz 0.8 V Low Low Normal 3.5 GHz 1.0 V Medium/High Mediu m Boost 5.0 GHz 1.2 V Very High High",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15",
+            "chunk_index": 15,
+            "score": 0.6103323101997375
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 1151.8712999968557,
+        "usage": {
+          "latency_ms": 1131.673399999272,
+          "prompt_tokens": 910,
+          "completion_tokens": 21,
+          "total_tokens": 931,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer correctly captures the core concept from the ground truth that a higher-power processor can be more energy-efficient if it completes the task significantly faster."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer directly matches the statement in the retrieved context that a processor consuming more power can be more energy-efficient if it completes the task significantly faster."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "The generated answer is directly supported by the cited text in chunk_20.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "The generated answer is a direct quote/paraphrase of the text found in chunk_20.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 1165.4775999923004
+    },
+    {
+      "question_id": "ca_small_015",
+      "original_question": "With unchanged capacitive load, what fraction of dynamic energy remains after a 15% voltage reduction?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17"
+      ],
+      "generation": {
+        "question": "With unchanged capacitive load, what fraction of dynamic energy remains after a 15% voltage reduction?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 27,
+            "text": "EXAMPLE • Some microprocessors today are designed to have adjustable voltage, so a 15% reduction in voltage may result in a 15% reduction in frequency. What would be the impact on dynamic energy and on dynamic power?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23",
+            "chunk_index": 23,
+            "score": 0.6076782941818237
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 28,
+            "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+            "chunk_index": 24,
+            "score": 0.5322389602661133
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 26,
+            "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • The power required per transistor is just the product of the energy of a transition multiplied by the frequency of transitions: • For a fixed task, slowing clock rate reduces power,but not energy. • Clearly, dynamic power and energy are greatly reduced by lowering the voltage, so voltages have dropped from 5 V to just under 1 V in 20 years. The capacitive load is a function of the number of transistors connected to an output and the technology, which determines the capacitance of the wires and the transistors.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+            "chunk_index": 22,
+            "score": 0.5095493793487549
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 25,
+            "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • For CMOS chips, the traditional primary energy consumption has been in switching transistors, also called dynamic energy. The energy required per transistor is proportional to the product of the capacitive load driven by the transistor and the square of the voltage: • This equation is the energy of pulse of the logic transition of 0->1->0 or 1->0->1. The energy of a single transition (0->1 or 1->0) is then",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+            "chunk_index": 21,
+            "score": 0.4644208252429962
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "chunk_index": 17,
+            "score": 0.3353715240955353
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 966.746800011606,
+        "usage": {
+          "latency_ms": 955.7219999987865,
+          "prompt_tokens": 964,
+          "completion_tokens": 6,
+          "total_tokens": 970,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 0.25,
+      "correctness": {
+        "score": 0.0,
+        "label": "incorrect",
+        "reason": "The generated answer incorrectly claims there is insufficient information, whereas the ground truth provides the mathematical solution for the dynamic energy remaining after a 15% voltage reduction."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer correctly states that there is insufficient information in the provided sources to compute the fraction of dynamic energy remaining."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "incorrect_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an answerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 980.3934000083245
+    },
+    {
+      "question_id": "ca_small_018",
+      "original_question": "How do clock gating and power gating differ in what they turn off?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30"
+      ],
+      "generation": {
+        "question": "How do clock gating and power gating differ in what they turn off?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 31,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Modern microprocessors offer many techniques to try to improve energy efficiency despite flat clock rates and constant supply voltages: • 1. Do nothing well. Most microprocessors today turn off the clock of inactive modules to save energy and dynamic power. For example, if no floating-point instructions are executing, the clock of the floating-point unit is disabled. If some cores are idle, their clocks are stopped.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+            "chunk_index": 27,
+            "score": 0.5177652835845947
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "chunk_index": 17,
+            "score": 0.4837258756160736
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 26,
+            "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • The power required per transistor is just the product of the energy of a transition multiplied by the frequency of transitions: • For a fixed task, slowing clock rate reduces power,but not energy. • Clearly, dynamic power and energy are greatly reduced by lowering the voltage, so voltages have dropped from 5 V to just under 1 V in 20 years. The capacitive load is a function of the number of transistors connected to an output and the technology, which determines the capacitance of the wires and the transistors.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+            "chunk_index": 22,
+            "score": 0.4567886292934418
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 35,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Power gating • Powerstatic ∝ Currentstatic ×Voltage • Current flows in transistors even when idle: leakage current • Leakage ranges from 25% to 50% of total power • Power Gating turns off power to inactive modules",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31",
+            "chunk_index": 31,
+            "score": 0.43931764364242554
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 34,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Overclocking. • Intel started offering T urbomode in 2008, where the chip decides that it is safe to run at a higher clock rate for a short time, possibly on just a few cores, until temperature starts to rise. For example, the 3.3 GHz Core i7 can run in short bursts for 3.6 GHz. Indeed, the highest-performing microprocessors each year since 2008 have all offered temporary overclocking of about 10% over the nominal clock rate. • For single-threaded code, these microprocessors can turn off all cores but one and run it faster. Note that, although the operating system can turn off T urbomode, there is no notification once it is enabled, so the programmers may be surprised to see their programs vary in performance because of room temperature.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+            "chunk_index": 30,
+            "score": 0.392214298248291
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 1005.4477000085171,
+        "usage": {
+          "latency_ms": 994.8433000099612,
+          "prompt_tokens": 1099,
+          "completion_tokens": 6,
+          "total_tokens": 1105,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 0.0,
+        "label": "incorrect",
+        "reason": "The generated answer provides no information and claims there is insufficient information, failing to answer the question."
+      },
+      "groundedness": {
+        "score": 0.0,
+        "label": "ungrounded",
+        "reason": "The provided sources contain information on clock gating and power gating individually, but the generated answer states 'Insufficient information in provided sources.', which does not attempt to answer using the provided context."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "incorrect_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an answerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 1019.935100004659
+    },
+    {
+      "question_id": "ca_small_023",
+      "original_question": "Which transition is a failure, which is a restoration, and how does MTTF relate to reliability?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34"
+      ],
+      "generation": {
+        "question": "Which transition is a failure, which is a restoration, and how does MTTF relate to reliability?",
+        "answer": "A failure is a transition from state 1 (service accomplishment) to state 2 (service interruption), and a restoration is a transition from state 2 to state 1. \n\nModule reliability is a measure of continuous service accomplishment or the time to failure from a reference initial instant, and therefore the mean time to failure (MTTF) is a reliability measure.",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 39
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 43
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 42
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 44
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 38
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 39,
+            "text": "DEPENDABILITY • Transitions between these two states are caused by failures (from state 1 to state 2) or restorations (2 to 1). Quantifying these transitions leads to the two main measures of dependability: • Module reliability is a measure of the continuous service accomplishment (or, equivalently, of the time to failure) from a reference initial instant. Therefore the mean time to failure (MTTF) is a reliability measure.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+            "chunk_index": 35,
+            "score": 0.7588294744491577
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 43,
+            "text": "FAILURE RATE In Computer Architecture, failure rate tells us how frequently a component is expected to fail. The simplest relationship with MTTF is: λ= 1/MTTF The reciprocal of MTTF is a rate of failures, generally reported as failures per billion hours of operation,or FIT(for failures in time).",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+            "chunk_index": 38,
+            "score": 0.6030166745185852
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 42,
+            "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+            "chunk_index": 37,
+            "score": 0.5292131304740906
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 44,
+            "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+            "chunk_index": 39,
+            "score": 0.37193211913108826
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 38,
+            "text": "DEPENDABILITY • Infrastructure providers started offering service level agreements (SLAs) or service level objectives (SLOs) to guarantee that their networking or power service would be dependable. For example, they would pay the customer a penalty if they did not meet an agreement of some hours per month. Thus an SLA could be used to decide whether the system was up or down. • Systems alternate between two states of service with respect to an SLA: • 1. Service accomplishment, where the service is delivered as specified. • 2. Service interruption, where the delivered service is different from the SLA.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+            "chunk_index": 34,
+            "score": 0.3546506464481354
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 854.4263000076171,
+        "usage": {
+          "latency_ms": 842.7998999977717,
+          "prompt_tokens": 1123,
+          "completion_tokens": 74,
+          "total_tokens": 1197,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer correctly identifies the failure transition, the restoration transition, and how MTTF relates to reliability, matching the ground truth accurately."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer correctly identifies a failure as a transition from state 1 to state 2, a restoration as a transition from state 2 to state 1, and explains that MTTF is a reliability measure based on the provided context."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "All claims in the generated answer regarding state transitions, failures, restorations, module reliability, and MTTF are directly supported by the cited evidence chunks 34 and 35.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "All factual claims in the generated answer are fully supported by the retrieved evidence.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 867.6202000060584
+    },
+    {
+      "question_id": "ca_small_024",
+      "original_question": "If a component has MTTF of one million hours, what failure rate follows from the slides' reciprocal relationship, in failures per hour and FIT?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36"
+      ],
+      "generation": {
+        "question": "If a component has MTTF of one million hours, what failure rate follows from the slides' reciprocal relationship, in failures per hour and FIT?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 43,
+            "text": "FAILURE RATE In Computer Architecture, failure rate tells us how frequently a component is expected to fail. The simplest relationship with MTTF is: λ= 1/MTTF The reciprocal of MTTF is a rate of failures, generally reported as failures per billion hours of operation,or FIT(for failures in time).",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+            "chunk_index": 38,
+            "score": 0.7636914849281311
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 39,
+            "text": "DEPENDABILITY • Transitions between these two states are caused by failures (from state 1 to state 2) or restorations (2 to 1). Quantifying these transitions leads to the two main measures of dependability: • Module reliability is a measure of the continuous service accomplishment (or, equivalently, of the time to failure) from a reference initial instant. Therefore the mean time to failure (MTTF) is a reliability measure.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+            "chunk_index": 35,
+            "score": 0.605324387550354
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 44,
+            "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+            "chunk_index": 39,
+            "score": 0.524569034576416
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 42,
+            "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+            "chunk_index": 37,
+            "score": 0.524490475654602
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 41,
+            "text": "CLASS ACTIVITY A data center is considering two processor modules: Which module has better availability? Module A Module B MTTF 1000 h 1200 h MTTR 50 h 100 h",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+            "chunk_index": 36,
+            "score": 0.34295105934143066
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 790.107300010277,
+        "usage": {
+          "latency_ms": 779.1021000011824,
+          "prompt_tokens": 1060,
+          "completion_tokens": 6,
+          "total_tokens": 1066,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 0.0,
+        "label": "incorrect",
+        "reason": "The generated answer claims insufficient information, failing to provide the calculated failure rate in failures per hour and FIT as required by the question and ground truth."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated response correctly states that there is insufficient information in the provided sources to calculate the specific numerical failure rate and FIT for an MTTF of one million hours."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "incorrect_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an answerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 809.4836000091163
+    },
+    {
+      "question_id": "ca_small_025",
+      "original_question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24"
+      ],
+      "generation": {
+        "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 38,
+            "text": "DEPENDABILITY • Infrastructure providers started offering service level agreements (SLAs) or service level objectives (SLOs) to guarantee that their networking or power service would be dependable. For example, they would pay the customer a penalty if they did not meet an agreement of some hours per month. Thus an SLA could be used to decide whether the system was up or down. • Systems alternate between two states of service with respect to an SLA: • 1. Service accomplishment, where the service is delivered as specified. • 2. Service interruption, where the delivered service is different from the SLA.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+            "chunk_index": 34,
+            "score": 0.3396182060241699
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 42,
+            "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+            "chunk_index": 37,
+            "score": 0.21005910634994507
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5,
+            "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "chunk_index": 4,
+            "score": 0.1972484439611435
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 41,
+            "text": "CLASS ACTIVITY A data center is considering two processor modules: Which module has better availability? Module A Module B MTTF 1000 h 1200 h MTTR 50 h 100 h",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+            "chunk_index": 36,
+            "score": 0.18716618418693542
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 28,
+            "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+            "chunk_index": 24,
+            "score": 0.18023023009300232
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 880.29450000613,
+        "usage": {
+          "latency_ms": 867.5561999989441,
+          "prompt_tokens": 995,
+          "completion_tokens": 6,
+          "total_tokens": 1001,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": null,
+        "3": null,
+        "5": null
+      },
+      "reciprocal_rank": null,
+      "correctness": null,
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer correctly states that there is insufficient information in the provided sources to determine the dollar penalty per hour for the SLA example."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "correct_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an unanswerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 892.5170000002254
+    },
+    {
+      "question_id": "ca_small_029",
+      "original_question": "What exact fan rotational speed is prescribed for the example 100 W TDP cooling system?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_18",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17"
+      ],
+      "generation": {
+        "question": "What exact fan rotational speed is prescribed for the example 100 W TDP cooling system?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 22,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Cooling system and TDP • a cooling system is usually designed to match or exceed TDP . Suppose: • TDP=100W • A cooling solution might be designed to handle:120W or more, depending on the system design.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_18",
+            "chunk_index": 18,
+            "score": 0.39783862233161926
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 28,
+            "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+            "chunk_index": 24,
+            "score": 0.3494384288787842
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 19,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+            "chunk_index": 16,
+            "score": 0.3243536353111267
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 44,
+            "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+            "chunk_index": 39,
+            "score": 0.3142305612564087
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "chunk_index": 17,
+            "score": 0.2936730682849884
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 673.5443000070518,
+        "usage": {
+          "latency_ms": 660.5644000082975,
+          "prompt_tokens": 965,
+          "completion_tokens": 6,
+          "total_tokens": 971,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": null,
+        "3": null,
+        "5": null
+      },
+      "reciprocal_rank": null,
+      "correctness": null,
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer correctly states that there is insufficient information in the provided sources regarding fan rotational speed."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "correct_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an unanswerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 691.7109999922104
+    }
+  ],
+  "summary": {
+    "evaluated_question_count": 10,
+    "retrieval": {
+      "evaluated_questions": 8,
+      "skipped_questions": 2,
+      "recall_at_k": {
+        "1": 0.625,
+        "3": 0.875,
+        "5": 1.0
+      },
+      "mrr": 0.7604166666666666
+    },
+    "correctness": {
+      "mean_score": 0.625,
+      "correct_count": 5,
+      "partially_correct_count": 0,
+      "incorrect_count": 3,
+      "evaluated_count": 8,
+      "skipped_count": 2
+    },
+    "groundedness": {
+      "mean_groundedness": 0.9,
+      "grounded_count": 9,
+      "partially_grounded_count": 0,
+      "ungrounded_count": 1,
+      "evaluated_count": 10
+    },
+    "citation_accuracy": {
+      "mean_citation_accuracy": 1.0,
+      "accurate_count": 5,
+      "partially_accurate_count": 0,
+      "inaccurate_count": 0,
+      "evaluated_count": 5,
+      "skipped_count": 5
+    },
+    "hallucination_refusal": {
+      "total_evaluated": 10,
+      "substantive_answerable_count": 5,
+      "answerable_count": 8,
+      "unanswerable_count": 2,
+      "hallucination_rate": 0.0,
+      "correct_refusal_rate": 1.0,
+      "failed_refusal_rate": 0.0,
+      "unnecessary_refusal_rate": 0.375,
+      "label_counts": {
+        "supported_answer": 5,
+        "hallucinated_answer": 0,
+        "correct_refusal": 2,
+        "incorrect_refusal": 3,
+        "failed_refusal": 0
+      }
+    },
+    "average_latency_ms": 946.6801899994607,
+    "total_prompt_tokens": 10047,
+    "total_completion_tokens": 341,
+    "total_tokens": 10388,
+    "total_cost": null,
+    "usage_scope": "answer_generation_only"
+  }
+}

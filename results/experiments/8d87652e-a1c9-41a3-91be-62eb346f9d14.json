@@ -1,0 +1,464 @@
+{
+  "experiment_id": "8d87652e-a1c9-41a3-91be-62eb346f9d14",
+  "timestamp": "2026-10-05T10:25:58.185983Z",
+  "config": {
+    "experiment_name": "ca_small_gemini_smoke_dense",
+    "retrieval_strategy": "dense",
+    "top_k": 5,
+    "candidate_k": 20,
+    "reranker_enabled": false,
+    "query_rewrite_enabled": false,
+    "model": "gemini-3.5-flash-lite",
+    "benchmark_name": "ca_small_benchmark",
+    "chunk_size": 512,
+    "recall_k_values": [
+      1,
+      3,
+      5
+    ],
+    "component_metadata": {
+      "provider": "gemini",
+      "corpus_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96",
+      "index_id": "b2091a5a8e130f7d2aa20e9633d988ac04aa0e1e6f9e440ff71247559d7851c2",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "chunk_overlap": "50"
+    }
+  },
+  "config_sha256": "f51b94f1ac03d09eb74f983884e7948454eb12034f9376cfeb5d3a952c11770b",
+  "benchmark_sha256": "d9f8e9a73c2fbbfe5cdec9479d261a78ed9052b1fdf770443d0d08cff4eb8360",
+  "benchmark": [
+    {
+      "question_id": "ca_small_001",
+      "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+      "ground_truth": "Transistor count doubles roughly every two years with a minimal increase in cost.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2"
+      ],
+      "category": "factual",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": "ca_small_018",
+      "question": "How do clock gating and power gating differ in what they turn off?",
+      "ground_truth": "Clock gating stops the clock to inactive modules or cores; power gating turns off power to inactive modules.",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31"
+      ],
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": "ca_small_025",
+      "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+      "ground_truth": "Insufficient information in provided sources.",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "category": "unanswerable",
+      "difficulty": "easy"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "ca_small_001",
+      "original_question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4"
+      ],
+      "generation": {
+        "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+        "answer": "Based on the provided slides, Moore's Law has a doubling interval of roughly every two years (or 18–24 months) and features a minimal increase in cost.",
+        "citations": [
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 4
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 8
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 3
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 6
+          },
+          {
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5
+          }
+        ],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 4,
+            "text": "MOORE’S LAW • The mathematical model: • If transistor count doubles every T years: • Where:N0 = initial transistor count • N(t) = transistor count after time t • T = doubling period • t = elapsed time • For Moore's Law: T=2 years",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+            "chunk_index": 3,
+            "score": 0.7574577331542969
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 8,
+            "text": "INTEGRATED CIRCUIT LOGIC TECHNOLOGY • Historically, transistor density increased by about 35% per year, quadrupling somewhat over four years. • Increases in die size are less predictable and slower,ranging from 10% to 20% per year. • The combined effect was a traditional growth rate in transistor count on a chip of about 40%–55% per year,or doubling every 18–24 months. • This trend is popularly known as Moore’s Law.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+            "chunk_index": 6,
+            "score": 0.729011595249176
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 3,
+            "text": "CLASS ACTIVITY • \"If a computer has 5 billion transistors today,how many could it have after 10 years if the transistor count doubles every 2 years?“ Moore’s Law • Moore’s Law is the prediction that the number of transistors on a chip will double roughly every two years, with a minimal increase in cost. • Moore’s Law, created by Gordon Moore before he co-founded Intel, has remained the golden rule for the electronics industry since its 1965 publication. • Moore’s Law only stops when innovation stops, and innovation continues to push forward.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+            "chunk_index": 2,
+            "score": 0.6953333616256714
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 6,
+            "text": "EXERCISE • A chip currently contains 3 billion transistors. Under a two-year doubling rate, after how many years would it theoretically exceed 100 billion transistors?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+            "chunk_index": 5,
+            "score": 0.6084207892417908
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5,
+            "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "chunk_index": 4,
+            "score": 0.5709304213523865
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 1074.011300006532,
+        "usage": {
+          "latency_ms": 1070.5051999975694,
+          "prompt_tokens": 1020,
+          "completion_tokens": 37,
+          "total_tokens": 1057,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 0.3333333333333333,
+      "correctness": {
+        "score": 1.0,
+        "label": "correct",
+        "reason": "The generated answer correctly states the doubling interval of roughly every two years (or 18-24 months) and the minimal increase in cost as given in the ground truth."
+      },
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The generated answer correctly states that Moore's Law has a doubling interval of roughly every two years (or 18-24 months) and features a minimal increase in cost, both of which are directly supported by the retrieved context."
+      },
+      "citation_accuracy": {
+        "score": 1.0,
+        "label": "accurate",
+        "reason": "The cited evidence explicitly supports that Moore's Law has a doubling interval of roughly every two years (or 18-24 months) and features a minimal increase in cost.",
+        "valid_citations": 5,
+        "invalid_citations": 0,
+        "total_citations": 5,
+        "skipped": false
+      },
+      "hallucination_refusal": {
+        "label": "supported_answer",
+        "hallucinated": false,
+        "refused": false,
+        "reason": "All factual claims in the generated answer regarding Moore's Law, its doubling interval of every two years or 18-24 months, and the minimal increase in cost are directly supported by the retrieved evidence.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 1102.0615000015823
+    },
+    {
+      "question_id": "ca_small_018",
+      "original_question": "How do clock gating and power gating differ in what they turn off?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30"
+      ],
+      "generation": {
+        "question": "How do clock gating and power gating differ in what they turn off?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 31,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Modern microprocessors offer many techniques to try to improve energy efficiency despite flat clock rates and constant supply voltages: • 1. Do nothing well. Most microprocessors today turn off the clock of inactive modules to save energy and dynamic power. For example, if no floating-point instructions are executing, the clock of the floating-point unit is disabled. If some cores are idle, their clocks are stopped.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+            "chunk_index": 27,
+            "score": 0.5177652835845947
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 20,
+            "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+            "chunk_index": 17,
+            "score": 0.4837258756160736
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 26,
+            "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • The power required per transistor is just the product of the energy of a transition multiplied by the frequency of transitions: • For a fixed task, slowing clock rate reduces power,but not energy. • Clearly, dynamic power and energy are greatly reduced by lowering the voltage, so voltages have dropped from 5 V to just under 1 V in 20 years. The capacitive load is a function of the number of transistors connected to an output and the technology, which determines the capacitance of the wires and the transistors.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+            "chunk_index": 22,
+            "score": 0.4567886292934418
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 35,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Power gating • Powerstatic ∝ Currentstatic ×Voltage • Current flows in transistors even when idle: leakage current • Leakage ranges from 25% to 50% of total power • Power Gating turns off power to inactive modules",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31",
+            "chunk_index": 31,
+            "score": 0.43931764364242554
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 34,
+            "text": "ENERGY EFFICIENCY STRATEGIES • Overclocking. • Intel started offering T urbomode in 2008, where the chip decides that it is safe to run at a higher clock rate for a short time, possibly on just a few cores, until temperature starts to rise. For example, the 3.3 GHz Core i7 can run in short bursts for 3.6 GHz. Indeed, the highest-performing microprocessors each year since 2008 have all offered temporary overclocking of about 10% over the nominal clock rate. • For single-threaded code, these microprocessors can turn off all cores but one and run it faster. Note that, although the operating system can turn off T urbomode, there is no notification once it is enabled, so the programmers may be surprised to see their programs vary in performance because of room temperature.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+            "chunk_index": 30,
+            "score": 0.392214298248291
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 908.3821999956854,
+        "usage": {
+          "latency_ms": 906.6212999896379,
+          "prompt_tokens": 1099,
+          "completion_tokens": 6,
+          "total_tokens": 1105,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "reciprocal_rank": 1.0,
+      "correctness": {
+        "score": 0.0,
+        "label": "incorrect",
+        "reason": "The generated answer provides no information and claims there is insufficient information, whereas the ground truth clearly explains the difference."
+      },
+      "groundedness": {
+        "score": 0.5,
+        "label": "partially_grounded",
+        "reason": "The context mentions turning off the clock for inactive modules (clock gating) and turning off power to inactive modules (power gating), but the generated answer simply says 'Insufficient information in provided sources.'"
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "incorrect_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an answerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 922.6437999896007
+    },
+    {
+      "question_id": "ca_small_025",
+      "original_question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+      "rewritten_query": null,
+      "retrieved_chunk_ids": [
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+        "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24"
+      ],
+      "generation": {
+        "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+        "answer": "Insufficient information in provided sources.",
+        "citations": [],
+        "retrieved_chunks": [
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 38,
+            "text": "DEPENDABILITY • Infrastructure providers started offering service level agreements (SLAs) or service level objectives (SLOs) to guarantee that their networking or power service would be dependable. For example, they would pay the customer a penalty if they did not meet an agreement of some hours per month. Thus an SLA could be used to decide whether the system was up or down. • Systems alternate between two states of service with respect to an SLA: • 1. Service accomplishment, where the service is delivered as specified. • 2. Service interruption, where the delivered service is different from the SLA.",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+            "chunk_index": 34,
+            "score": 0.3396182060241699
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 42,
+            "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+            "chunk_index": 37,
+            "score": 0.21005910634994507
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 5,
+            "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+            "chunk_index": 4,
+            "score": 0.1972484439611435
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 41,
+            "text": "CLASS ACTIVITY A data center is considering two processor modules: Which module has better availability? Module A Module B MTTF 1000 h 1200 h MTTR 50 h 100 h",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+            "chunk_index": 36,
+            "score": 0.18716618418693542
+          },
+          {
+            "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+            "source": "Week # 02 Slides.pdf",
+            "page_number": 28,
+            "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+            "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+            "chunk_index": 24,
+            "score": 0.18023023009300232
+          }
+        ],
+        "model": "gemini-3.5-flash-lite",
+        "latency_ms": 699.8218999942765,
+        "usage": {
+          "latency_ms": 697.6257999922382,
+          "prompt_tokens": 995,
+          "completion_tokens": 6,
+          "total_tokens": 1001,
+          "cost": null
+        }
+      },
+      "recall_at_k": {
+        "1": null,
+        "3": null,
+        "5": null
+      },
+      "reciprocal_rank": null,
+      "correctness": null,
+      "groundedness": {
+        "score": 1.0,
+        "label": "grounded",
+        "reason": "The retrieved context does not mention any exact dollar penalty per hour for an SLA, so the generated answer correctly states there is insufficient information."
+      },
+      "citation_accuracy": {
+        "score": null,
+        "label": "not_applicable",
+        "reason": "The exact project refusal has no factual claims requiring citations.",
+        "valid_citations": 0,
+        "invalid_citations": 0,
+        "total_citations": 0,
+        "skipped": true
+      },
+      "hallucination_refusal": {
+        "label": "correct_refusal",
+        "hallucinated": false,
+        "refused": true,
+        "reason": "Exact project refusal for an unanswerable benchmark item.",
+        "unsupported_claims": []
+      },
+      "latency_ms": 718.4701000078348
+    }
+  ],
+  "summary": {
+    "evaluated_question_count": 3,
+    "retrieval": {
+      "evaluated_questions": 2,
+      "skipped_questions": 1,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "mrr": 0.6666666666666666
+    },
+    "correctness": {
+      "mean_score": 0.5,
+      "correct_count": 1,
+      "partially_correct_count": 0,
+      "incorrect_count": 1,
+      "evaluated_count": 2,
+      "skipped_count": 1
+    },
+    "groundedness": {
+      "mean_groundedness": 0.8333333333333334,
+      "grounded_count": 2,
+      "partially_grounded_count": 1,
+      "ungrounded_count": 0,
+      "evaluated_count": 3
+    },
+    "citation_accuracy": {
+      "mean_citation_accuracy": 1.0,
+      "accurate_count": 1,
+      "partially_accurate_count": 0,
+      "inaccurate_count": 0,
+      "evaluated_count": 1,
+      "skipped_count": 2
+    },
+    "hallucination_refusal": {
+      "total_evaluated": 3,
+      "substantive_answerable_count": 1,
+      "answerable_count": 2,
+      "unanswerable_count": 1,
+      "hallucination_rate": 0.0,
+      "correct_refusal_rate": 1.0,
+      "failed_refusal_rate": 0.0,
+      "unnecessary_refusal_rate": 0.5,
+      "label_counts": {
+        "supported_answer": 1,
+        "hallucinated_answer": 0,
+        "correct_refusal": 1,
+        "incorrect_refusal": 1,
+        "failed_refusal": 0
+      }
+    },
+    "average_latency_ms": 914.3917999996726,
+    "total_prompt_tokens": 3114,
+    "total_completion_tokens": 49,
+    "total_tokens": 3163,
+    "total_cost": null,
+    "usage_scope": "answer_generation_only"
+  }
+}

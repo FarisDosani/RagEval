@@ -221,3 +221,40 @@ def test_complete_usage_sums_and_order(components, tmp_path):
     assert result.summary.total_completion_tokens == 10
     assert result.summary.total_tokens == 30
     assert result.summary.total_cost == pytest.approx(0.02)
+
+
+def test_checkpoint_resume_never_repeats_completed_question(components, tmp_path):
+    checkpoint=tmp_path/'progress.json'
+    response=components.generator.generate_from_chunks.return_value
+    components.generator.generate_from_chunks.side_effect=[response,RuntimeError('quota')]
+    items=[item(question_id='q1'),item(question_id='q2')]
+    with pytest.raises(RuntimeError,match='quota'):
+        components.run(items,config(),output_dir=tmp_path/'results',checkpoint_path=checkpoint)
+    saved=json.loads(checkpoint.read_text())
+    assert [q['question_id'] for q in saved['questions']]==['q1']
+    components.generator.reset_mock()
+    components.generator.generate_from_chunks.side_effect=None
+    result=components.run(items,config(),output_dir=tmp_path/'results',checkpoint_path=checkpoint)
+    components.generator.generate_from_chunks.assert_called_once()
+    assert [q.question_id for q in result.questions]==['q1','q2']
+    assert str(result.experiment_id)==saved['experiment_id']
+    components.generator.reset_mock()
+    same=components.run(items,config(),output_dir=tmp_path/'results',checkpoint_path=checkpoint)
+    assert same==result
+    components.generator.generate_from_chunks.assert_not_called()
+
+
+def test_checkpoint_rejects_changed_config_before_calls(components,tmp_path):
+    checkpoint=tmp_path/'progress.json'
+    components.run([item()],config(),output_dir=tmp_path/'results',checkpoint_path=checkpoint)
+    components.generator.reset_mock()
+    with pytest.raises(ValueError,match='mismatch'):
+        components.run([item()],config(top_k=2),output_dir=tmp_path/'results',checkpoint_path=checkpoint)
+    components.generator.generate_from_chunks.assert_not_called()
+
+
+def test_quota_wait_excluded_from_latency(components,tmp_path,monkeypatch):
+    from app.experiments import experiment_runner
+    monkeypatch.setattr(experiment_runner,'perf_counter',Mock(side_effect=[10.,16.]))
+    result=components.run([item()],config(),output_dir=tmp_path,excluded_wait_ms=Mock(side_effect=[0.,5000.]))
+    assert result.summary.average_latency_ms==1000.

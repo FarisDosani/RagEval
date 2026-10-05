@@ -1,0 +1,53 @@
+{
+  "experiment_id": "8d87652e-a1c9-41a3-91be-62eb346f9d14",
+  "questions": [
+    {
+      "question_id": "ca_small_001",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_018",
+      "failure_categories": [
+        "generation_incorrect",
+        "generation_ungrounded",
+        "incorrect_refusal"
+      ],
+      "notes": [
+        "Correctness: incorrect.",
+        "Groundedness score: 0.5.",
+        "Recorded behavior: incorrect_refusal."
+      ]
+    },
+    {
+      "question_id": "ca_small_025",
+      "failure_categories": [],
+      "notes": []
+    }
+  ],
+  "summary": {
+    "total_questions_analyzed": 3,
+    "questions_with_failures": 1,
+    "failure_free_questions": 2,
+    "category_counts": {
+      "retrieval_miss": 0,
+      "retrieval_low_rank": 0,
+      "generation_incorrect": 1,
+      "generation_ungrounded": 1,
+      "citation_failure": 0,
+      "hallucination": 0,
+      "incorrect_refusal": 1,
+      "failed_refusal": 0
+    },
+    "category_rates": {
+      "retrieval_miss": 0.0,
+      "retrieval_low_rank": 0.0,
+      "generation_incorrect": 0.3333333333333333,
+      "generation_ungrounded": 0.3333333333333333,
+      "citation_failure": 0.0,
+      "hallucination": 0.0,
+      "incorrect_refusal": 0.3333333333333333,
+      "failed_refusal": 0.0
+    }
+  }
+}

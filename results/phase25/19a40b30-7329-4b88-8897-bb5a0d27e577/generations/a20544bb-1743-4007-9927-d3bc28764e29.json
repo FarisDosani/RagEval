@@ -1,0 +1,93 @@
+{
+  "stage": "smoke",
+  "strategy": "ca_small_gemini_smoke_bm25",
+  "evaluator": "generation",
+  "question_id": "ca_small_001",
+  "result": {
+    "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+    "answer": "Doubling interval: Roughly every two years (or 18–24 months).\nCost trend: A minimal increase in cost.",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 4
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 3
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 8
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 5
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 4,
+        "text": "MOORE’S LAW • The mathematical model: • If transistor count doubles every T years: • Where:N0 = initial transistor count • N(t) = transistor count after time t • T = doubling period • t = elapsed time • For Moore's Law: T=2 years",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+        "chunk_index": 3,
+        "score": 19.06451390894368
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 3,
+        "text": "CLASS ACTIVITY • \"If a computer has 5 billion transistors today,how many could it have after 10 years if the transistor count doubles every 2 years?“ Moore’s Law • Moore’s Law is the prediction that the number of transistors on a chip will double roughly every two years, with a minimal increase in cost. • Moore’s Law, created by Gordon Moore before he co-founded Intel, has remained the golden rule for the electronics industry since its 1965 publication. • Moore’s Law only stops when innovation stops, and innovation continues to push forward.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+        "chunk_index": 2,
+        "score": 15.4168287097098
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 8,
+        "text": "INTEGRATED CIRCUIT LOGIC TECHNOLOGY • Historically, transistor density increased by about 35% per year, quadrupling somewhat over four years. • Increases in die size are less predictable and slower,ranging from 10% to 20% per year. • The combined effect was a traditional growth rate in transistor count on a chip of about 40%–55% per year,or doubling every 18–24 months. • This trend is popularly known as Moore’s Law.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+        "chunk_index": 6,
+        "score": 14.120744063025537
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 5,
+        "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "chunk_index": 4,
+        "score": 13.420347477821506
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 6.659572245993667
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 787.4728000024334,
+    "usage": {
+      "latency_ms": 786.0337000020081,
+      "prompt_tokens": 1072,
+      "completion_tokens": 28,
+      "total_tokens": 1100,
+      "cost": null
+    }
+  }
+}

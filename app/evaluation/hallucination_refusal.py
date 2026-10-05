@@ -26,6 +26,12 @@ Return only one JSON object with exactly hallucinated (boolean), reason
 hallucinated must be true if any unsupported factual claims exist, and those
 claims must be listed. Otherwise return false and an empty unsupported_claims
 list. No Markdown fences, prefixes, or extra fields.
+The only permitted keys are hallucinated, reason, unsupported_claims.
+reason MUST be a nonempty concise string, including when hallucinated=false.
+When false, briefly explain why the answer is supported. unsupported_claims may
+be [] when none exist. Example for a fully supported answer:
+{"hallucinated": false, "reason": "All factual claims are supported by the retrieved evidence.", "unsupported_claims": []}
+Do not copy the example unless its assessment fits the supplied evidence.
 """
 
 

@@ -1,6 +1,6 @@
 import hashlib
 import json
-from collections.abc import Iterable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
@@ -61,6 +61,8 @@ class ExperimentRunner:
     def run(
         self, benchmark: Iterable[BenchmarkItem], config: ExperimentConfig, *,
         output_dir: str | Path = DEFAULT_RESULTS_DIR, experiment_id: UUID | None = None,
+        checkpoint_path: str | Path | None = None,
+        excluded_wait_ms: Callable[[], float] | None = None,
     ) -> ExperimentResult:
         config = config.model_copy(deep=True)
         items = [item.model_copy(deep=True) for item in benchmark]
@@ -74,11 +76,26 @@ class ExperimentRunner:
             raise ValueError("query_rewrite_enabled requires an injected query rewriter")
         if self.generator.llm.model != config.model:
             raise ValueError("Configured model must match the generation service model")
-        identifier = UUID(str(experiment_id)) if experiment_id is not None else uuid4()
+        config_hash = _digest(config.model_dump(mode="json"))
+        benchmark_hash = _digest([item.model_dump(mode="json") for item in items])
+        checkpoint = Path(checkpoint_path) if checkpoint_path is not None else None
+        saved = None
+        if checkpoint is not None and checkpoint.exists():
+            saved = json.loads(checkpoint.read_text(encoding="utf-8"))
+            if saved['config_sha256'] != config_hash or saved['benchmark_sha256'] != benchmark_hash:
+                raise ValueError("Checkpoint config/benchmark mismatch")
+            if experiment_id is not None and str(experiment_id) != saved['experiment_id']:
+                raise ValueError("Checkpoint experiment ID mismatch")
+        identifier = UUID(saved['experiment_id']) if saved else UUID(str(experiment_id)) if experiment_id is not None else uuid4()
         path = Path(output_dir) / f"{identifier}.json"
         if path.exists():
+            if saved is not None:
+                completed = ExperimentResult.model_validate_json(path.read_text(encoding='utf-8'))
+                if completed.config_sha256 != config_hash or completed.benchmark_sha256 != benchmark_hash:
+                    raise ValueError('Completed checkpoint result identity mismatch')
+                return completed
             raise FileExistsError(f"Experiment result already exists: {path}")
-        timestamp = datetime.now(timezone.utc)
+        timestamp = datetime.fromisoformat(saved['timestamp']) if saved else datetime.now(timezone.utc)
         retriever = self.retrievers[config.retrieval_strategy]
         limit = max(config.candidate_k, config.top_k) if config.reranker_enabled else config.top_k
         searches = {
@@ -86,8 +103,25 @@ class ExperimentRunner:
             "bm25": lambda query: retriever.search(query, top_k=limit),
             "hybrid": lambda query: retriever.search(query, candidate_k=max(config.candidate_k, limit), final_top_k=limit),
         }
-        questions = []
-        for item in items:
+        questions = [QuestionExperimentResult.model_validate(q) for q in saved['questions']] if saved else []
+        if [q.question_id for q in questions] != [i.question_id for i in items[:len(questions)]] or len(questions) > len(items):
+            raise ValueError("Checkpoint questions must be an ordered benchmark prefix")
+
+        def persist_checkpoint():
+            if checkpoint is None:
+                return
+            checkpoint.parent.mkdir(parents=True, exist_ok=True)
+            temporary = checkpoint.with_suffix('.tmp')
+            temporary.write_text(json.dumps({
+                'experiment_id': str(identifier), 'timestamp': timestamp.isoformat(),
+                'config_sha256': config_hash, 'benchmark_sha256': benchmark_hash,
+                'questions': [q.model_dump(mode='json') for q in questions],
+            }, ensure_ascii=False, indent=2), encoding='utf-8')
+            temporary.replace(checkpoint)
+
+        persist_checkpoint()
+        for item in items[len(questions):]:
+            wait_before = excluded_wait_ms() if excluded_wait_ms is not None else 0.0
             started = perf_counter()
             rewritten = self.query_rewriter.rewrite_query(item.question) if config.query_rewrite_enabled else None
             chunks = searches[config.retrieval_strategy](rewritten if rewritten is not None else item.question)
@@ -95,6 +129,8 @@ class ExperimentRunner:
                 chunks = self.reranker.rerank(rewritten if rewritten is not None else item.question, chunks, top_k=config.top_k)
             generation = self.generator.generate_from_chunks(item.question, chunks)
             latency = (perf_counter() - started) * 1000
+            if excluded_wait_ms is not None:
+                latency = max(generation.latency_ms, latency - (excluded_wait_ms() - wait_before))
             ids = [chunk.chunk_id for chunk in chunks]
             relevant = item.relevant_chunk_ids if item.answerable else []
             questions.append(QuestionExperimentResult(
@@ -107,6 +143,7 @@ class ExperimentRunner:
                 citation_accuracy=self.citation_accuracy.evaluate(generation.answer, generation.citations, chunks),
                 hallucination_refusal=self.hallucination_refusal.evaluate(item.answerable, generation.answer, chunks),
             ))
+            persist_checkpoint()
         summary = ExperimentSummary(
             evaluated_question_count=len(questions),
             retrieval=evaluate_retrieval(items, {q.question_id: q.retrieved_chunk_ids for q in questions}, config.recall_k_values),

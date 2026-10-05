@@ -1,0 +1,518 @@
+{
+  "benchmark_sha256": "84d1c64197afcd223dc4fb5486a81494ae29e374f4bf32481f099982c35c6493",
+  "question_ids": [
+    "ca_small_001",
+    "ca_small_003",
+    "ca_small_008",
+    "ca_small_012",
+    "ca_small_015",
+    "ca_small_018",
+    "ca_small_023",
+    "ca_small_024",
+    "ca_small_025",
+    "ca_small_029"
+  ],
+  "candidate_k": 20,
+  "api_calls": 0,
+  "results": [
+    {
+      "top_k": 1,
+      "evaluated_questions": 8,
+      "skipped_questions": 2,
+      "recall_at_k": {
+        "1": 0.75
+      },
+      "mrr": 0.75
+    },
+    {
+      "top_k": 3,
+      "evaluated_questions": 8,
+      "skipped_questions": 2,
+      "recall_at_k": {
+        "3": 1.0
+      },
+      "mrr": 0.875
+    },
+    {
+      "top_k": 5,
+      "evaluated_questions": 8,
+      "skipped_questions": 2,
+      "recall_at_k": {
+        "5": 1.0
+      },
+      "mrr": 0.875
+    }
+  ],
+  "rankings": {
+    "ca_small_001": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 4,
+        "text": "MOORE’S LAW • The mathematical model: • If transistor count doubles every T years: • Where:N0 = initial transistor count • N(t) = transistor count after time t • T = doubling period • t = elapsed time • For Moore's Law: T=2 years",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_3",
+        "chunk_index": 3,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 3,
+        "text": "CLASS ACTIVITY • \"If a computer has 5 billion transistors today,how many could it have after 10 years if the transistor count doubles every 2 years?“ Moore’s Law • Moore’s Law is the prediction that the number of transistors on a chip will double roughly every two years, with a minimal increase in cost. • Moore’s Law, created by Gordon Moore before he co-founded Intel, has remained the golden rule for the electronics industry since its 1965 publication. • Moore’s Law only stops when innovation stops, and innovation continues to push forward.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2",
+        "chunk_index": 2,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 8,
+        "text": "INTEGRATED CIRCUIT LOGIC TECHNOLOGY • Historically, transistor density increased by about 35% per year, quadrupling somewhat over four years. • Increases in die size are less predictable and slower,ranging from 10% to 20% per year. • The combined effect was a traditional growth rate in transistor count on a chip of about 40%–55% per year,or doubling every 18–24 months. • This trend is popularly known as Moore’s Law.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6",
+        "chunk_index": 6,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 5,
+        "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "chunk_index": 4,
+        "score": 0.031009615384615385
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 6,
+        "text": "EXERCISE • A chip currently contains 3 billion transistors. Under a two-year doubling rate, after how many years would it theoretically exceed 100 billion transistors?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_5",
+        "chunk_index": 5,
+        "score": 0.030776515151515152
+      }
+    ],
+    "ca_small_003": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 9,
+        "text": "LATENCY AND BANDWIDTH • Latency = the time you have to wait before an operation starts producing its result/data. • Latency tells us \"How long do I have to wait?“ • Suppose the CPU requests data from RAM and the first byte of data arrives after 100 ns. • Lower latency = better/faster response.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "chunk_index": 7,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 15,
+        "text": "PERFORMANCE TRENDS: BANDWIDTH OVER LATENCY • Bandwidth or throughput is the total amount of work done in a given time, such as megabytes per second for a disk transfer. • In contrast, latency or response time is the time between the start and the completion of an event, such as milliseconds for a disk access. • A simple rule of thumb is that bandwidth grows by at least the square of the improvement in latency. Computer designers should plan accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "chunk_index": 13,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10,
+        "text": "LATENCY AND BANDWIDTH • Bandwidth = the amount of data that can be transferred per unit of time. • Bandwidth tells us \"How much data can I transfer per second?“ • It is usually measured in: MB/s GB/s • Higher bandwidth = more data can be transferred per second.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "chunk_index": 8,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 41,
+        "text": "CLASS ACTIVITY A data center is considering two processor modules: Which module has better availability? Module A Module B MTTF 1000 h 1200 h MTTR 50 h 100 h",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+        "chunk_index": 36,
+        "score": 0.02877846790890269
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 34,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Overclocking. • Intel started offering T urbomode in 2008, where the chip decides that it is safe to run at a higher clock rate for a short time, possibly on just a few cores, until temperature starts to rise. For example, the 3.3 GHz Core i7 can run in short bursts for 3.6 GHz. Indeed, the highest-performing microprocessors each year since 2008 have all offered temporary overclocking of about 10% over the nominal clock rate. • For single-threaded code, these microprocessors can turn off all cores but one and run it faster. Note that, although the operating system can turn off T urbomode, there is no notification once it is enabled, so the programmers may be surprised to see their programs vary in performance because of room temperature.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+        "chunk_index": 30,
+        "score": 0.028381642512077296
+      }
+    ],
+    "ca_small_008": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 0.03252247488101534
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 18,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? Modern processors can dynamically adjust: • Voltage • Clock frequency • Power consumption CPU State Frequency Voltage Performance Power Low- power 2.0 GHz 0.8 V Low Low Normal 3.5 GHz 1.0 V Medium/High Mediu m Boost 5.0 GHz 1.2 V Very High High",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15",
+        "chunk_index": 15,
+        "score": 0.031024531024531024
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 0.03057889822595705
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 31,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Modern microprocessors offer many techniques to try to improve energy efficiency despite flat clock rates and constant supply voltages: • 1. Do nothing well. Most microprocessors today turn off the clock of inactive modules to save energy and dynamic power. For example, if no floating-point instructions are executing, the clock of the floating-point unit is disabled. If some cores are idle, their clocks are stopped.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "chunk_index": 27,
+        "score": 0.0304147465437788
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 0.030090497737556562
+      }
+    ],
+    "ca_small_012": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 24,
+        "text": "ENERGY AND ENERGY EFFICIENCY A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "chunk_index": 20,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 0.03225806451612903
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 36,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Race-to-halt • Processor is only part of system cost • Use faster, less energy-efficient processor to allow the rest of the system to halt",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32",
+        "chunk_index": 32,
+        "score": 0.031024531024531024
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32,
+        "text": "ENERGY EFFICIENCY STRATEGIES • 2. Dynamic voltage and frequency scaling (DVFS) is the adjustment of power and speed settings on a computing device's various processors, controller chips and peripheral devices to optimize resource allotment for tasks and maximize power saving when those resources are not needed. • If the current task is computationally intensive, meaning it requires the processor to consume more energy and run at a higher frequency, DVFS will ensure that the voltage and frequency increase to match the requirements. However,if the processor needs to run a low-priority or less computationally intensive task where high speed and throughput are not required,it will adjust accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "chunk_index": 28,
+        "score": 0.029571646010002173
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 0.029513888888888888
+      }
+    ],
+    "ca_small_015": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 27,
+        "text": "EXAMPLE • Some microprocessors today are designed to have adjustable voltage, so a 15% reduction in voltage may result in a 15% reduction in frequency. What would be the impact on dynamic energy and on dynamic power?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23",
+        "chunk_index": 23,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 25,
+        "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • For CMOS chips, the traditional primary energy consumption has been in switching transistors, also called dynamic energy. The energy required per transistor is proportional to the product of the capacitive load driven by the transistor and the square of the voltage: • This equation is the energy of pulse of the logic transition of 0->1->0 or 1->0->1. The energy of a single transition (0->1 or 1->0) is then",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+        "chunk_index": 21,
+        "score": 0.031754032258064516
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 28,
+        "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "chunk_index": 24,
+        "score": 0.031754032258064516
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 26,
+        "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • The power required per transistor is just the product of the energy of a transition multiplied by the frequency of transitions: • For a fixed task, slowing clock rate reduces power,but not energy. • Clearly, dynamic power and energy are greatly reduced by lowering the voltage, so voltages have dropped from 5 V to just under 1 V in 20 years. The capacitive load is a function of the number of transistors connected to an output and the technology, which determines the capacitance of the wires and the transistors.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+        "chunk_index": 22,
+        "score": 0.031746031746031744
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 0.030309988518943745
+      }
+    ],
+    "ca_small_018": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 31,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Modern microprocessors offer many techniques to try to improve energy efficiency despite flat clock rates and constant supply voltages: • 1. Do nothing well. Most microprocessors today turn off the clock of inactive modules to save energy and dynamic power. For example, if no floating-point instructions are executing, the clock of the floating-point unit is disabled. If some cores are idle, their clocks are stopped.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "chunk_index": 27,
+        "score": 0.03252247488101534
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 35,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Power gating • Powerstatic ∝ Currentstatic ×Voltage • Current flows in transistors even when idle: leakage current • Leakage ranges from 25% to 50% of total power • Power Gating turns off power to inactive modules",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31",
+        "chunk_index": 31,
+        "score": 0.032018442622950824
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 20,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+        "chunk_index": 17,
+        "score": 0.031754032258064516
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 34,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Overclocking. • Intel started offering T urbomode in 2008, where the chip decides that it is safe to run at a higher clock rate for a short time, possibly on just a few cores, until temperature starts to rise. For example, the 3.3 GHz Core i7 can run in short bursts for 3.6 GHz. Indeed, the highest-performing microprocessors each year since 2008 have all offered temporary overclocking of about 10% over the nominal clock rate. • For single-threaded code, these microprocessors can turn off all cores but one and run it faster. Note that, although the operating system can turn off T urbomode, there is no notification once it is enabled, so the programmers may be surprised to see their programs vary in performance because of room temperature.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+        "chunk_index": 30,
+        "score": 0.03125763125763126
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 28,
+        "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "chunk_index": 24,
+        "score": 0.030536130536130537
+      }
+    ],
+    "ca_small_023": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 39,
+        "text": "DEPENDABILITY • Transitions between these two states are caused by failures (from state 1 to state 2) or restorations (2 to 1). Quantifying these transitions leads to the two main measures of dependability: • Module reliability is a measure of the continuous service accomplishment (or, equivalently, of the time to failure) from a reference initial instant. Therefore the mean time to failure (MTTF) is a reliability measure.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+        "chunk_index": 35,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 43,
+        "text": "FAILURE RATE In Computer Architecture, failure rate tells us how frequently a component is expected to fail. The simplest relationship with MTTF is: λ= 1/MTTF The reciprocal of MTTF is a rate of failures, generally reported as failures per billion hours of operation,or FIT(for failures in time).",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "chunk_index": 38,
+        "score": 0.03225806451612903
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 41,
+        "text": "CLASS ACTIVITY A data center is considering two processor modules: Which module has better availability? Module A Module B MTTF 1000 h 1200 h MTTR 50 h 100 h",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_36",
+        "chunk_index": 36,
+        "score": 0.030798389007344232
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 42,
+        "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "chunk_index": 37,
+        "score": 0.03036576949620428
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 44,
+        "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "chunk_index": 39,
+        "score": 0.029910714285714284
+      }
+    ],
+    "ca_small_024": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 43,
+        "text": "FAILURE RATE In Computer Architecture, failure rate tells us how frequently a component is expected to fail. The simplest relationship with MTTF is: λ= 1/MTTF The reciprocal of MTTF is a rate of failures, generally reported as failures per billion hours of operation,or FIT(for failures in time).",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "chunk_index": 38,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 39,
+        "text": "DEPENDABILITY • Transitions between these two states are caused by failures (from state 1 to state 2) or restorations (2 to 1). Quantifying these transitions leads to the two main measures of dependability: • Module reliability is a measure of the continuous service accomplishment (or, equivalently, of the time to failure) from a reference initial instant. Therefore the mean time to failure (MTTF) is a reliability measure.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35",
+        "chunk_index": 35,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 44,
+        "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "chunk_index": 39,
+        "score": 0.03200204813108039
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 42,
+        "text": "EXERCISE A computer system contains a critical memory module.It fails on average every 1500 hours of operation and takes 6 hours to repair.After a redesign, its MTTF increases to 1800 hours, but because the new design is more complicated, MTTR increases to 12 hours. Calculate the original MTBF. Calculate original availability. Calculate redesigned MTBF. Calculate redesigned availability. Did the redesign improve availability?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_37",
+        "chunk_index": 37,
+        "score": 0.031009615384615385
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 37,
+        "text": "DEPENDABILITY • Historically,integrated circuits were one of the most reliable components of a computer. Although their pins may be vulnerable, and faults may occur over communication channels, the failure rate inside the chip was very low.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_33",
+        "chunk_index": 33,
+        "score": 0.030330882352941176
+      }
+    ],
+    "ca_small_025": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 38,
+        "text": "DEPENDABILITY • Infrastructure providers started offering service level agreements (SLAs) or service level objectives (SLOs) to guarantee that their networking or power service would be dependable. For example, they would pay the customer a penalty if they did not meet an agreement of some hours per month. Thus an SLA could be used to decide whether the system was up or down. • Systems alternate between two states of service with respect to an SLA: • 1. Service accomplishment, where the service is delivered as specified. • 2. Service interruption, where the delivered service is different from the SLA.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+        "chunk_index": 34,
+        "score": 0.03278688524590164
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 44,
+        "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "chunk_index": 39,
+        "score": 0.03128054740957967
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 28,
+        "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "chunk_index": 24,
+        "score": 0.030309988518943745
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 5,
+        "text": "CLASS ACTIVITY • 1. A processor currently contains 4 billion transistors. Assuming Moore's Law,estimate the transistor count after 6 years. • 2. A CPU has 10 billion transistors. Another CPU has 80 billion transistors. Assuming Moore's Law, approximately how much time separates the two generations?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_4",
+        "chunk_index": 4,
+        "score": 0.029957522915269395
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 0.028693528693528692
+      }
+    ],
+    "ca_small_029": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 22,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Cooling system and TDP • a cooling system is usually designed to match or exceed TDP . Suppose: • TDP=100W • A cooling solution might be designed to handle:120W or more, depending on the system design.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_18",
+        "chunk_index": 18,
+        "score": 0.03252247488101534
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 0.032266458495966696
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 44,
+        "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "chunk_index": 39,
+        "score": 0.03125
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 0.030798389007344232
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 28,
+        "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "chunk_index": 24,
+        "score": 0.030017921146953404
+      }
+    ]
+  }
+}

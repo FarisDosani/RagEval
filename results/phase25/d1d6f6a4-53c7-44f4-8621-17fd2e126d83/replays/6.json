@@ -1,0 +1,8 @@
+{
+  "stage": "smoke",
+  "strategy": "ca_small_gemini_smoke_bm25",
+  "evaluator": "generation",
+  "question_id": "ca_small_018",
+  "original_record_id": "5aaeff8d-0f9e-4e86-81ce-8b751f502189",
+  "request_sha256": "b1d0fe2dcf7949b3169daa6b9ab56a1170b40e7de1059858b705c431b5d00f27"
+}

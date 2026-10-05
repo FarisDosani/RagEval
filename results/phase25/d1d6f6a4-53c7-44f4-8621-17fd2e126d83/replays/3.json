@@ -1,0 +1,8 @@
+{
+  "stage": "smoke",
+  "strategy": "ca_small_gemini_smoke_bm25",
+  "evaluator": "groundedness",
+  "question_id": "ca_small_001",
+  "original_record_id": "0d5bd386-0066-49ea-89f9-051bffad0837",
+  "request_sha256": "ff5307368683108c136b700056dd38d8104b72ffbd5ba0464a72f8fa3c6089af"
+}

@@ -1,0 +1,67 @@
+{
+  "stage": "smoke",
+  "strategy": "ca_small_gemini_smoke_bm25",
+  "evaluator": "generation",
+  "question_id": "ca_small_025",
+  "result": {
+    "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+    "answer": "Insufficient information in provided sources.",
+    "citations": [],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 38,
+        "text": "DEPENDABILITY • Infrastructure providers started offering service level agreements (SLAs) or service level objectives (SLOs) to guarantee that their networking or power service would be dependable. For example, they would pay the customer a penalty if they did not meet an agreement of some hours per month. Thus an SLA could be used to decide whether the system was up or down. • Systems alternate between two states of service with respect to an SLA: • 1. Service accomplishment, where the service is delivered as specified. • 2. Service interruption, where the delivered service is different from the SLA.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+        "chunk_index": 34,
+        "score": 10.077749249236618
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 44,
+        "text": "EXAMPLE • Assume a disk subsystem with the following components and MTTF: • 10 disks, each rated at 1,000,000-hour MTTF • 1 ATA controller, 500,000-hour MTTF • 1 power supply, 200,000-hour MTTF • 1 fan, 200,000-hour MTTF • 1 ATA cable, 1,000,000-hour MTTF Compute the MTTF of the system as a whole.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_39",
+        "chunk_index": 39,
+        "score": 8.833967100894567
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 5.689859470496188
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 5.476224807126984
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 27,
+        "text": "EXAMPLE • Some microprocessors today are designed to have adjustable voltage, so a 15% reduction in voltage may result in a 15% reduction in frequency. What would be the impact on dynamic energy and on dynamic power?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23",
+        "chunk_index": 23,
+        "score": 4.80554223250065
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 689.9071000079857,
+    "usage": {
+      "latency_ms": 677.7463000034913,
+      "prompt_tokens": 1068,
+      "completion_tokens": 6,
+      "total_tokens": 1074,
+      "cost": null
+    }
+  }
+}

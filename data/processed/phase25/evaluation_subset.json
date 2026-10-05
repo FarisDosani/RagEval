@@ -1,0 +1,16 @@
+{
+  "question_ids": [
+    "ca_small_001",
+    "ca_small_003",
+    "ca_small_008",
+    "ca_small_012",
+    "ca_small_015",
+    "ca_small_018",
+    "ca_small_023",
+    "ca_small_024",
+    "ca_small_025",
+    "ca_small_029"
+  ],
+  "benchmark_sha256": "ffc0d322353ea927547e4dbbae77e5d6ac710f6c8d17346bf5ebe5bbbc22a9d8",
+  "selection": "Fixed IDs: eight answerable, two unanswerable; multiple categories and all difficulty levels."
+}

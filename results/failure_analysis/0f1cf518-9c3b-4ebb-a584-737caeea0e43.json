@@ -1,0 +1,92 @@
+{
+  "experiment_id": "0f1cf518-9c3b-4ebb-a584-737caeea0e43",
+  "questions": [
+    {
+      "question_id": "ca_small_001",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_003",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_008",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_012",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_015",
+      "failure_categories": [
+        "generation_incorrect",
+        "incorrect_refusal"
+      ],
+      "notes": [
+        "Correctness: incorrect.",
+        "Recorded behavior: incorrect_refusal."
+      ]
+    },
+    {
+      "question_id": "ca_small_018",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_023",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_024",
+      "failure_categories": [
+        "generation_incorrect",
+        "incorrect_refusal"
+      ],
+      "notes": [
+        "Correctness: incorrect.",
+        "Recorded behavior: incorrect_refusal."
+      ]
+    },
+    {
+      "question_id": "ca_small_025",
+      "failure_categories": [],
+      "notes": []
+    },
+    {
+      "question_id": "ca_small_029",
+      "failure_categories": [],
+      "notes": []
+    }
+  ],
+  "summary": {
+    "total_questions_analyzed": 10,
+    "questions_with_failures": 2,
+    "failure_free_questions": 8,
+    "category_counts": {
+      "retrieval_miss": 0,
+      "retrieval_low_rank": 0,
+      "generation_incorrect": 2,
+      "generation_ungrounded": 0,
+      "citation_failure": 0,
+      "hallucination": 0,
+      "incorrect_refusal": 2,
+      "failed_refusal": 0
+    },
+    "category_rates": {
+      "retrieval_miss": 0.0,
+      "retrieval_low_rank": 0.0,
+      "generation_incorrect": 0.2,
+      "generation_ungrounded": 0.0,
+      "citation_failure": 0.0,
+      "hallucination": 0.0,
+      "incorrect_refusal": 0.2,
+      "failed_refusal": 0.0
+    }
+  }
+}

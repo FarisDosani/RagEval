@@ -1,0 +1,93 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_bm25",
+  "evaluator": "generation",
+  "question_id": "ca_small_012",
+  "result": {
+    "question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+    "answer": "A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 24
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 34
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 24,
+        "text": "ENERGY AND ENERGY EFFICIENCY A processor that consumes more power can still be more energy-efficient if it completes the task significantly faster.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20",
+        "chunk_index": 20,
+        "score": 22.83422835104731
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 14.053046823243914
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32,
+        "text": "ENERGY EFFICIENCY STRATEGIES • 2. Dynamic voltage and frequency scaling (DVFS) is the adjustment of power and speed settings on a computing device's various processors, controller chips and peripheral devices to optimize resource allotment for tasks and maximize power saving when those resources are not needed. • If the current task is computationally intensive, meaning it requires the processor to consume more energy and run at a higher frequency, DVFS will ensure that the voltage and frequency increase to match the requirements. However,if the processor needs to run a low-priority or less computationally intensive task where high speed and throughput are not required,it will adjust accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "chunk_index": 28,
+        "score": 9.650692623502392
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10,
+        "text": "LATENCY AND BANDWIDTH • Bandwidth = the amount of data that can be transferred per unit of time. • Bandwidth tells us \"How much data can I transfer per second?“ • It is usually measured in: MB/s GB/s • Higher bandwidth = more data can be transferred per second.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "chunk_index": 8,
+        "score": 9.109161383040568
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 34,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Overclocking. • Intel started offering T urbomode in 2008, where the chip decides that it is safe to run at a higher clock rate for a short time, possibly on just a few cores, until temperature starts to rise. For example, the 3.3 GHz Core i7 can run in short bursts for 3.6 GHz. Indeed, the highest-performing microprocessors each year since 2008 have all offered temporary overclocking of about 10% over the nominal clock rate. • For single-threaded code, these microprocessors can turn off all cores but one and run it faster. Note that, although the operating system can turn off T urbomode, there is no notification once it is enabled, so the programmers may be surprised to see their programs vary in performance because of room temperature.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30",
+        "chunk_index": 30,
+        "score": 7.089197955500477
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 1983.1153999984963,
+    "usage": {
+      "latency_ms": 1972.39609999815,
+      "prompt_tokens": 1105,
+      "completion_tokens": 21,
+      "total_tokens": 1126,
+      "cost": null
+    }
+  }
+}

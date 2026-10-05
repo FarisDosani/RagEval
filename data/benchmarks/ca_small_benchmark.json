@@ -1,0 +1,326 @@
+[
+  {
+    "question_id": "ca_small_001",
+    "question": "What doubling interval and cost trend does the slide give for transistor count under Moore's Law?",
+    "ground_truth": "Transistor count doubles roughly every two years with a minimal increase in cost.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_2"
+    ],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_002",
+    "question": "In the RAM example, what does the 100 ns latency measure?",
+    "ground_truth": "The waiting time before the first byte arrives.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7"
+    ],
+    "category": "definition",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_003",
+    "question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+    "ground_truth": "Latency is the wait before the first result and lower is better. Bandwidth is data transferred per unit time and higher is better.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8"
+    ],
+    "category": "comparison",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_004",
+    "question": "What annual transistor-density increase and approximate four-year change are stated in the slides?",
+    "ground_truth": "Density increases about 35% per year and roughly quadruples in four years.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_6"
+    ],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_005",
+    "question": "Which memory technology is described as the foundation of main memory?",
+    "ground_truth": "DRAM is the foundation of main memory.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_9"
+    ],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_006",
+    "question": "How is flash memory characterized in the slides, and is it volatile?",
+    "ground_truth": "Flash is electrically erasable programmable read-only memory and is nonvolatile.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_10"
+    ],
+    "category": "definition",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_007",
+    "question": "According to the bandwidth/latency trend slide, how does bandwidth improvement compare with latency improvement?",
+    "ground_truth": "Bandwidth grows at least as the square of the improvement in latency.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13"
+    ],
+    "category": "comparison",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_008",
+    "question": "Does processor power stay constant across idle, normal, heavy, and burst workloads? Describe the stated pattern.",
+    "ground_truth": "No. Power is low when idle, moderate during normal work, high under heavy load, and very high during short bursts.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14"
+    ],
+    "category": "comparison",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_009",
+    "question": "What frequency and voltage does the example CPU use in normal and boost modes?",
+    "ground_truth": "Normal mode is 3.5 GHz at 1.0 V; boost mode is 5.0 GHz at 1.2 V.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15"
+    ],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_010",
+    "question": "What does TDP stand for, and what design purpose does it serve?",
+    "ground_truth": "Thermal Design Power is the sustained power target used to design the processor cooling system.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16"
+    ],
+    "category": "definition",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_011",
+    "question": "For the slide's 100 W TDP processor, what cooling capacity is suggested and what general rule is stated?",
+    "ground_truth": "Cooling should match or exceed TDP; the example suggests around 120 W or more depending on design.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_18"
+    ],
+    "category": "factual",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_012",
+    "question": "Why can a higher-power processor still be more energy-efficient for a particular task?",
+    "ground_truth": "Energy, rather than power alone, is the better task-level comparison. A higher-power processor can be more energy-efficient if it completes the task significantly faster.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_20"
+    ],
+    "category": "multi_hop",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_013",
+    "question": "For CMOS switching, how does transistor dynamic energy depend on load and voltage?",
+    "ground_truth": "It is proportional to capacitive load multiplied by voltage squared.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21"
+    ],
+    "category": "definition",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_014",
+    "question": "For a fixed task, contrast slowing the clock with lowering voltage in terms of dynamic power and energy.",
+    "ground_truth": "Slowing the clock reduces power but not energy for a fixed task. Lowering voltage reduces both dynamic power and energy.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22"
+    ],
+    "category": "comparison",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_015",
+    "question": "With unchanged capacitive load, what fraction of dynamic energy remains after a 15% voltage reduction?",
+    "ground_truth": "Dynamic energy scales with voltage squared, so 0.85 squared = 0.7225, or 72.25%, remains.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21"
+    ],
+    "category": "reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "ca_small_016",
+    "question": "If both voltage and transition frequency drop by 15% with load unchanged, what fraction of dynamic power remains?",
+    "ground_truth": "Dynamic power scales with voltage squared times frequency: 0.85 squared times 0.85 = 0.614125, or about 61.41%, remains.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23"
+    ],
+    "category": "multi_hop",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "ca_small_017",
+    "question": "What constraints do the slides give for slowing clock-frequency growth?",
+    "ground_truth": "Voltage cannot be reduced further and power per chip cannot increase because the air-cooling limit has been reached; heat dissipation is the major constraint.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_26"
+    ],
+    "category": "reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_018",
+    "question": "How do clock gating and power gating differ in what they turn off?",
+    "ground_truth": "Clock gating stops the clock to inactive modules or cores; power gating turns off power to inactive modules.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_31"
+    ],
+    "category": "comparison",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_019",
+    "question": "How does DVFS respond to a computationally intensive task compared with a less intensive task?",
+    "ground_truth": "It increases voltage and frequency for intensive work and adjusts them downward when high speed and throughput are unnecessary.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28"
+    ],
+    "category": "definition",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_020",
+    "question": "Why might a Turbo-enabled program's performance vary with room temperature, according to the slides?",
+    "ground_truth": "Turbo permits a higher clock rate only while thermally safe and until temperature rises, so room temperature affects the available boost and therefore performance.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_30"
+    ],
+    "category": "reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "ca_small_021",
+    "question": "What is the system-level rationale of race-to-halt?",
+    "ground_truth": "A faster, less energy-efficient processor can finish sooner and allow the rest of the system to halt.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_32"
+    ],
+    "category": "definition",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_022",
+    "question": "Under an SLA, what distinguishes service accomplishment from service interruption?",
+    "ground_truth": "Service accomplishment delivers service as specified; service interruption delivers service different from the SLA.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34"
+    ],
+    "category": "comparison",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_023",
+    "question": "Which transition is a failure, which is a restoration, and how does MTTF relate to reliability?",
+    "ground_truth": "Failure moves from service accomplishment to interruption; restoration moves back. MTTF measures reliability through time to failure or continuous service accomplishment.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_34",
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_35"
+    ],
+    "category": "multi_hop",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "ca_small_024",
+    "question": "If a component has MTTF of one million hours, what failure rate follows from the slides' reciprocal relationship, in failures per hour and FIT?",
+    "ground_truth": "The rate is 1/1,000,000 = 0.000001 failures per hour, equivalent to 1,000 failures per billion hours, or 1,000 FIT.",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38"
+    ],
+    "category": "reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "ca_small_025",
+    "question": "What exact dollar penalty per hour does the lecture's SLA example impose?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_026",
+    "question": "What is the exact maximum junction temperature in degrees Celsius of the 3.3 GHz Core i7 discussed in the slides?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_027",
+    "question": "Which semiconductor process-node size in nanometers was used for the example CPU's low-power, normal, and boost modes?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_028",
+    "question": "What numerical L1 cache hit latency is specified for the example Core i7?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "ca_small_029",
+    "question": "What exact fan rotational speed is prescribed for the example 100 W TDP cooling system?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "ca_small_030",
+    "question": "What measured percentage energy saving did a controlled race-to-halt experiment achieve in this lecture?",
+    "ground_truth": "Insufficient information in provided sources.",
+    "answerable": false,
+    "relevant_chunk_ids": [],
+    "category": "unanswerable",
+    "difficulty": "hard"
+  }
+]

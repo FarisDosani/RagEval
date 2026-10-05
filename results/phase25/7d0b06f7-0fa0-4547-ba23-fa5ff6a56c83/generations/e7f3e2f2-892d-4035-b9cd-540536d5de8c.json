@@ -1,0 +1,93 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_hybrid",
+  "evaluator": "generation",
+  "question_id": "ca_small_008",
+  "result": {
+    "question": "Does processor power stay constant across idle, normal, heavy, and burst workloads? Describe the stated pattern.",
+    "answer": "No, processor power does not stay constant. \n\nThe pattern is as follows:\n- When the CPU is idle, it uses low power.\n- When running normal programs, it uses moderate power.\n- When performing heavy calculations, it uses high power.\n- During short bursts of activity, it may demand very high peak power.",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 18
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 31
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 17,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? A processor does not consume a constant amount of power. For example: When the CPU is idle → low power When running normal programs → moderate power When performing heavy calculations → high power During short bursts of activity → it may demand very high peak power",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_14",
+        "chunk_index": 14,
+        "score": 0.03252247488101534
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 18,
+        "text": "MAXIMUM POWER A PROCESSOR EVER REQUIRES? Modern processors can dynamically adjust: • Voltage • Clock frequency • Power consumption CPU State Frequency Voltage Performance Power Low- power 2.0 GHz 0.8 V Low Low Normal 3.5 GHz 1.0 V Medium/High Mediu m Boost 5.0 GHz 1.2 V Very High High",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_15",
+        "chunk_index": 15,
+        "score": 0.031024531024531024
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 19,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? The amount of power a processor is expected to dissipate continuously during a sustained workload. • TDP = Thermal Design Power • TDP is primarily a thermal-design target. For example, suppose a processor has: TDP=100W This means the computer's cooling system should generally be capable of handling approximately 100 W of sustained thermal load under the relevant design conditions.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_16",
+        "chunk_index": 16,
+        "score": 0.03057889822595705
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 31,
+        "text": "ENERGY EFFICIENCY STRATEGIES • Modern microprocessors offer many techniques to try to improve energy efficiency despite flat clock rates and constant supply voltages: • 1. Do nothing well. Most microprocessors today turn off the clock of inactive modules to save energy and dynamic power. For example, if no floating-point instructions are executing, the clock of the floating-point unit is disabled. If some cores are idle, their clocks are stopped.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_27",
+        "chunk_index": 27,
+        "score": 0.0304147465437788
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 23,
+        "text": "ENERGY AND ENERGY EFFICIENCY The key idea is that power and energy are not the same thing, and when comparing processors for a particular task, energy is usually the better metric. Question :Which Processor is Energy Efficient? Processor A Processor B Average power 120 W 100 W Execution time 7 s 10 s",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_19",
+        "chunk_index": 19,
+        "score": 0.030090497737556562
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 933.0659999977797,
+    "usage": {
+      "latency_ms": 877.0839999924647,
+      "prompt_tokens": 1021,
+      "completion_tokens": 70,
+      "total_tokens": 1091,
+      "cost": null
+    }
+  }
+}

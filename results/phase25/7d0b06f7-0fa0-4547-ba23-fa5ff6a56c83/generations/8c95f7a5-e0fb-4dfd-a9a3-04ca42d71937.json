@@ -1,0 +1,67 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_dense",
+  "evaluator": "generation",
+  "question_id": "ca_small_015",
+  "result": {
+    "question": "With unchanged capacitive load, what fraction of dynamic energy remains after a 15% voltage reduction?",
+    "answer": "Insufficient information in provided sources.",
+    "citations": [],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 27,
+        "text": "EXAMPLE • Some microprocessors today are designed to have adjustable voltage, so a 15% reduction in voltage may result in a 15% reduction in frequency. What would be the impact on dynamic energy and on dynamic power?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_23",
+        "chunk_index": 23,
+        "score": 0.6076782941818237
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 28,
+        "text": "EXERCISE A processor designer wants to reduce dynamic power by 50%. The clock frequency will be reduced by 20%. By what percentage should the voltage be reduced?",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_24",
+        "chunk_index": 24,
+        "score": 0.5322389602661133
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 26,
+        "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • The power required per transistor is just the product of the energy of a transition multiplied by the frequency of transitions: • For a fixed task, slowing clock rate reduces power,but not energy. • Clearly, dynamic power and energy are greatly reduced by lowering the voltage, so voltages have dropped from 5 V to just under 1 V in 20 years. The capacitive load is a function of the number of transistors connected to an output and the technology, which determines the capacitance of the wires and the transistors.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_22",
+        "chunk_index": 22,
+        "score": 0.5095493793487549
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 25,
+        "text": "ENERGY AND POWERWITHIN A MICROPROCESSOR • For CMOS chips, the traditional primary energy consumption has been in switching transistors, also called dynamic energy. The energy required per transistor is proportional to the product of the capacitive load driven by the transistor and the square of the voltage: • This equation is the energy of pulse of the logic transition of 0->1->0 or 1->0->1. The energy of a single transition (0->1 or 1->0) is then",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_21",
+        "chunk_index": 21,
+        "score": 0.4644208252429962
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 20,
+        "text": "WHAT IS SUSTAINED POWER CONSUMPTION? Modern processors generally have thermal management mechanisms. Level 1 — Reduce clock frequency",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_17",
+        "chunk_index": 17,
+        "score": 0.3353715240955353
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 966.746800011606,
+    "usage": {
+      "latency_ms": 955.7219999987865,
+      "prompt_tokens": 964,
+      "completion_tokens": 6,
+      "total_tokens": 970,
+      "cost": null
+    }
+  }
+}

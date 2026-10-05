@@ -1,0 +1,93 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_dense",
+  "evaluator": "generation",
+  "question_id": "ca_small_003",
+  "result": {
+    "question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+    "answer": "**Difference:**\n* **Latency** (also called response time) is the time you have to wait before an operation starts producing its result/data, or the time between the start and the completion of an event.\n* **Bandwidth** (also called throughput) is the total amount of work done, or data transferred, in a given time (e.g., megabytes per second).\n\n**Preferable direction of change:**\n* **Latency:** Lower latency is preferable (it means a better/faster response).\n* **Bandwidth:** Higher bandwidth is preferable (it means more data can be transferred per second).",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 9
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 15
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_12",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 14
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 9,
+        "text": "LATENCY AND BANDWIDTH • Latency = the time you have to wait before an operation starts producing its result/data. • Latency tells us \"How long do I have to wait?“ • Suppose the CPU requests data from RAM and the first byte of data arrives after 100 ns. • Lower latency = better/faster response.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "chunk_index": 7,
+        "score": 0.7373712062835693
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 15,
+        "text": "PERFORMANCE TRENDS: BANDWIDTH OVER LATENCY • Bandwidth or throughput is the total amount of work done in a given time, such as megabytes per second for a disk transfer. • In contrast, latency or response time is the time between the start and the completion of an event, such as milliseconds for a disk access. • A simple rule of thumb is that bandwidth grows by at least the square of the improvement in latency. Computer designers should plan accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "chunk_index": 13,
+        "score": 0.7121397256851196
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10,
+        "text": "LATENCY AND BANDWIDTH • Bandwidth = the amount of data that can be transferred per unit of time. • Bandwidth tells us \"How much data can I transfer per second?“ • It is usually measured in: MB/s GB/s • Higher bandwidth = more data can be transferred per second.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "chunk_index": 8,
+        "score": 0.6752252578735352
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 14,
+        "text": "NETWORK TECHNOLOGY",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_12",
+        "chunk_index": 12,
+        "score": 0.33595654368400574
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 32,
+        "text": "ENERGY EFFICIENCY STRATEGIES • 2. Dynamic voltage and frequency scaling (DVFS) is the adjustment of power and speed settings on a computing device's various processors, controller chips and peripheral devices to optimize resource allotment for tasks and maximize power saving when those resources are not needed. • If the current task is computationally intensive, meaning it requires the processor to consume more energy and run at a higher frequency, DVFS will ensure that the voltage and frequency increase to match the requirements. However,if the processor needs to run a low-priority or less computationally intensive task where high speed and throughput are not required,it will adjust accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_28",
+        "chunk_index": 28,
+        "score": 0.2945363521575928
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 1057.2841999819502,
+    "usage": {
+      "latency_ms": 1046.2364999984857,
+      "prompt_tokens": 993,
+      "completion_tokens": 128,
+      "total_tokens": 1121,
+      "cost": null
+    }
+  }
+}

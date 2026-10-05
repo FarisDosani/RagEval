@@ -1,0 +1,22 @@
+{
+  "id": "83122d37-a21b-4a0a-91ad-9f54b89cf2cc",
+  "timestamp": "2026-10-05T10:18:10.051430+00:00",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "stage": "compatibility",
+  "question_id": "compatibility_slide_3",
+  "evaluator": "simple",
+  "system_prompt": "You are a concise assistant.",
+  "user_prompt": "Reply with OK.",
+  "success": true,
+  "response": {
+    "latency_ms": 1078.868099997635,
+    "prompt_tokens": 11,
+    "completion_tokens": 2,
+    "total_tokens": 13,
+    "cost": null,
+    "text": "OK.",
+    "model": "gemini-3.5-flash-lite"
+  },
+  "wall_clock_ms": 1078.9632000087295
+}

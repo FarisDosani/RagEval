@@ -1,0 +1,93 @@
+{
+  "stage": "subset",
+  "strategy": "ca_small_gemini_subset_bm25",
+  "evaluator": "generation",
+  "question_id": "ca_small_003",
+  "result": {
+    "question": "How do latency and bandwidth differ, and which direction of change is preferable for each?",
+    "answer": "**Difference:**\n* **Latency** is the time you have to wait before an operation starts producing its result/data (or the time between the start and completion of an event/response time).\n* **Bandwidth** (or throughput) is the amount of data that can be transferred per unit of time (the total amount of work done in a given time).\n\n**Preferable direction of change:**\n* **Latency:** Lower latency is better/faster.\n* **Bandwidth:** Higher bandwidth is better (more data can be transferred per second).",
+    "citations": [
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 9
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 15
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_1",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 2
+      },
+      {
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 43
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 9,
+        "text": "LATENCY AND BANDWIDTH • Latency = the time you have to wait before an operation starts producing its result/data. • Latency tells us \"How long do I have to wait?“ • Suppose the CPU requests data from RAM and the first byte of data arrives after 100 ns. • Lower latency = better/faster response.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_7",
+        "chunk_index": 7,
+        "score": 12.23886858275028
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 10,
+        "text": "LATENCY AND BANDWIDTH • Bandwidth = the amount of data that can be transferred per unit of time. • Bandwidth tells us \"How much data can I transfer per second?“ • It is usually measured in: MB/s GB/s • Higher bandwidth = more data can be transferred per second.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_8",
+        "chunk_index": 8,
+        "score": 10.790582165699728
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 15,
+        "text": "PERFORMANCE TRENDS: BANDWIDTH OVER LATENCY • Bandwidth or throughput is the total amount of work done in a given time, such as megabytes per second for a disk transfer. • In contrast, latency or response time is the time between the start and the completion of an event, such as milliseconds for a disk access. • A simple rule of thumb is that bandwidth grows by at least the square of the improvement in latency. Computer designers should plan accordingly.",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_13",
+        "chunk_index": 13,
+        "score": 10.022260249988218
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 2,
+        "text": "TRENDS IN TECHNOLOGY • If an instruction set architecture is to prevail, it must be designed to survive rapid changes in computer technology. • An architect must plan for technology changes that can increase the lifetime of a successful computer. • To plan for the evolution of a computer,the designer must be aware of rapid changes in implementation technology. Five implementation technologies, which change at a dramatic pace, are critical to modern implementations:",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_1",
+        "chunk_index": 1,
+        "score": 6.929723335629055
+      },
+      {
+        "document_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50",
+        "source": "Week # 02 Slides.pdf",
+        "page_number": 43,
+        "text": "FAILURE RATE In Computer Architecture, failure rate tells us how frequently a component is expected to fail. The simplest relationship with MTTF is: λ= 1/MTTF The reciprocal of MTTF is a rate of failures, generally reported as failures per billion hours of operation,or FIT(for failures in time).",
+        "chunk_id": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96_s512_o50_chunk_38",
+        "chunk_index": 38,
+        "score": 4.604019316649821
+      }
+    ],
+    "model": "gemini-3.5-flash-lite",
+    "latency_ms": 1109.7446999920066,
+    "usage": {
+      "latency_ms": 1095.262200004072,
+      "prompt_tokens": 1006,
+      "completion_tokens": 114,
+      "total_tokens": 1120,
+      "cost": null
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "source": "Week # 02 Slides.pdf",
+  "corpus_sha256": "300a539e6f12b32c00a9f598c692a2edf99f71652b034bbe8e26c7784f1e4a96",
+  "document_count": 1,
+  "page_count": 45,
+  "nonempty_units": 41,
+  "word_count": 2156,
+  "chunk_count": 41,
+  "chunk_size": 512,
+  "chunk_overlap": 50
+}
