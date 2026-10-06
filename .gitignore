@@ -1,7 +1,46 @@
-venv/
+# Runtime credentials (examples are intentionally versioned).
 .env
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-.pytest_cache/
+.env.*
+!.env.example
 .env.docker
+
+# Python environments and generated files.
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.ipynb_checkpoints/
+
+# Frontend dependencies/builds.
+node_modules/
+.next/
+frontend/out/
+*.tsbuildinfo
+
+# Local tooling, caches and scratch space.
+.kilo/
+.vscode/
+.idea/
+.cache/
+.huggingface/
+tmp/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Resumable execution scratch space; canonical research results stay versioned.
+backend/results/phase25/*/calls/
+backend/results/phase25/*/generations/
+backend/results/phase25/*/replays/
+backend/results/phase25/*/compatibility.json
+backend/results/phase25/checkpoints/
+backend/results/phase25/pacing.json

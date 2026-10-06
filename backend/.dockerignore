@@ -36,9 +36,3 @@ docs/
 .coverage*
 htmlcov/
 coverage.xml
-
-backend/data/
-backend/results/
-backend/tests/
-backend/docs/
-backend/.venv/

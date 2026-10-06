@@ -17,6 +17,6 @@ Types in `types/api.ts` mirror the existing FastAPI OpenAPI schemas. Cost values
 use provider-reported units, and unavailable values remain unavailable. No results
 are persisted in browser storage. The frontend uses no chart library.
 
-Recommended runtime: Node.js 22.13 or newer (required by a lint dependency).
-The local Node 22.12 runtime produced an engine warning during installation;
-lint and production build nevertheless passed during Phase 24 verification.
+Required runtime: Node.js 22.13 or newer. Use `npm ci` for the pinned dependency
+tree. Dependencies and `.next` output are generated locally and ignored;
+they are removed after repository cleanup verification.

@@ -1,8 +1,0 @@
-{
-  "stage": "smoke",
-  "strategy": "ca_small_gemini_smoke_bm25",
-  "evaluator": "hallucination_refusal",
-  "question_id": "ca_small_001",
-  "original_record_id": "968632a4-cf88-43bf-9d6c-c96be86e36e9",
-  "request_sha256": "915a4813d2d0a4f08ddc892161ae13ac9eba10d7ace78b2d8cef45c69dac800f"
-}
