@@ -18,5 +18,4 @@ use provider-reported units, and unavailable values remain unavailable. No resul
 are persisted in browser storage. The frontend uses no chart library.
 
 Required runtime: Node.js 22.13 or newer. Use `npm ci` for the pinned dependency
-tree. Dependencies and `.next` output are generated locally and ignored;
-they are removed after repository cleanup verification.
+tree. Dependencies and `.next` output are generated locally and ignored.

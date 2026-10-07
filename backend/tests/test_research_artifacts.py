@@ -1,4 +1,4 @@
-"""Keep published research references and accounting valid after cleanup."""
+"""Keep published research references and accounting valid."""
 import json
 from pathlib import Path
 
