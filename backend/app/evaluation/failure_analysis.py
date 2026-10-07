@@ -44,7 +44,7 @@ class ExperimentFailureAnalysis(BaseModel):
 
 def analyze_question(
     result: QuestionExperimentResult, benchmark_item: BenchmarkItem | None,
-    *, top_k: int,
+    *, top_k: int, retrieval_strategy: str = "dense",
 ) -> QuestionFailureAnalysis:
     """Use stored ordered IDs as authoritative rank evidence.
 
@@ -64,7 +64,9 @@ def analyze_question(
         categories.append(category)
         notes.append(note)
 
-    if benchmark_item is None:
+    if retrieval_strategy == "llm_only":
+        notes.append("Retrieval not applicable: LLM-only baseline.")
+    elif benchmark_item is None:
         notes.append("Retrieval not assessed: benchmark item unavailable.")
     elif benchmark_item.answerable:
         relevant = set(benchmark_item.relevant_chunk_ids)
@@ -116,7 +118,8 @@ def analyze_experiment(experiment_result: ExperimentResult) -> ExperimentFailure
         raise ValueError("Duplicate benchmark question IDs")
     if len({q.question_id for q in experiment_result.questions}) != len(experiment_result.questions):
         raise ValueError("Duplicate result question IDs")
-    questions = [analyze_question(q, benchmark.get(q.question_id), top_k=experiment_result.config.top_k)
+    questions = [analyze_question(q, benchmark.get(q.question_id), top_k=experiment_result.config.top_k,
+                                  retrieval_strategy=experiment_result.config.retrieval_strategy)
                  for q in experiment_result.questions]
     return ExperimentFailureAnalysis(
         experiment_id=experiment_result.experiment_id, questions=questions,

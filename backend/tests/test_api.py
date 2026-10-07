@@ -22,11 +22,11 @@ def api(tmp_path, monkeypatch):
     monkeypatch.setattr(LLMService, "__init__", forbidden)
     pipeline = Mock()
     pipeline.llm.model = "test-model"
-    pipeline.ask.return_value = RAGResponse(question="Question?", answer="Answer", citations=[],
+    pipeline.generate_from_chunks.return_value = RAGResponse(question="Question?", answer="Answer", citations=[],
                                            retrieved_chunks=[], model="test-model", latency_ms=2)
     # Empty synthetic benchmarks exercise real runner serialization without
     # executing retrieval, generation or judges. All components are mocks.
-    real_runner = ExperimentRunner(retrievers={"dense": Mock(), "bm25": Mock()}, generator=pipeline,
+    real_runner = ExperimentRunner(retrievers={name: Mock(**{"search.return_value": [], "search_text.return_value": []}) for name in ("dense", "bm25", "hybrid")}, generator=pipeline,
                                    correctness=Mock(), groundedness=Mock(), citation_accuracy=Mock(),
                                    hallucination_refusal=Mock())
     runner = Mock(wraps=real_runner)
@@ -43,7 +43,8 @@ def test_health_root_and_query(api):
     response = client.post("/query", json={"question": "Question?", "top_k": 3})
     assert response.status_code == 200
     assert response.json()["answer"] == "Answer"
-    pipeline.ask.assert_called_once_with("Question?", top_k=3)
+    pipeline.generate_from_chunks.assert_called_once_with("Question?", [])
+    assert response.json()["retrieval_strategy"] == "hybrid"
 
 
 @pytest.mark.parametrize("payload", [{"question": " "}, {"question": "Q", "top_k": 0},
@@ -51,7 +52,7 @@ def test_health_root_and_query(api):
 def test_invalid_query(api, payload):
     client, pipeline, _, _ = api
     assert client.post("/query", json=payload).status_code == 400
-    pipeline.ask.assert_not_called()
+    pipeline.generate_from_chunks.assert_not_called()
 
 
 def test_experiment_saved_read_and_analysis(api):
@@ -116,7 +117,7 @@ def test_missing_invalid_and_traversal_ids(api, kind):
                                          (ValueError("secret-key"), 400)])
 def test_service_errors_are_sanitized(api, error, status):
     client, pipeline, _, _ = api
-    pipeline.ask.side_effect = error
+    pipeline.generate_from_chunks.side_effect = error
     response = client.post("/query", json={"question": "Q"})
     assert response.status_code == status
     assert "secret-key" not in response.text

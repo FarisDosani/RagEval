@@ -9,13 +9,14 @@ from uuid import UUID, uuid4
 from app.experiments.models import ExperimentConfig, ExperimentResult, ExperimentSummary, QuestionExperimentResult
 from app.schemas.benchmark import BenchmarkItem
 from app.generation.rag_pipeline import RAGPipeline
+from app.generation.llm_only import generate_llm_only
 from app.generation.query_rewriter import QueryRewriter
 from app.retrieval.reranker import CrossEncoderReranker
-from app.evaluation.retrieval_metrics import evaluate_retrieval, recall_at_k, reciprocal_rank
+from app.evaluation.retrieval_metrics import evaluate_retrieval, recall_at_k, reciprocal_rank, RetrievalMetrics
 from app.evaluation.answer_correctness import AnswerCorrectnessEvaluator, summarize_correctness
 from app.evaluation.groundedness import GroundednessEvaluator, summarize_groundedness
-from app.evaluation.citation_accuracy import CitationAccuracyEvaluator, summarize_citation_accuracy
-from app.evaluation.hallucination_refusal import HallucinationRefusalEvaluator, summarize_hallucination_refusal
+from app.evaluation.citation_accuracy import CitationAccuracyEvaluator, summarize_citation_accuracy, CitationAccuracyResult
+from app.evaluation.hallucination_refusal import HallucinationRefusalEvaluator, summarize_hallucination_refusal, evaluate_refusal_only
 
 DEFAULT_RESULTS_DIR = Path(__file__).resolve().parents[2] / "results" / "experiments"
 
@@ -68,7 +69,10 @@ class ExperimentRunner:
         items = [item.model_copy(deep=True) for item in benchmark]
         if len({item.question_id for item in items}) != len(items):
             raise ValueError("Duplicate benchmark question IDs")
-        if config.retrieval_strategy not in self.retrievers:
+        baseline = config.retrieval_strategy == "llm_only"
+        if baseline and (config.reranker_enabled or config.query_rewrite_enabled):
+            raise ValueError("llm_only cannot use retrieval modifiers")
+        if not baseline and config.retrieval_strategy not in self.retrievers:
             raise ValueError("Selected retrieval strategy has no injected retriever")
         if config.reranker_enabled and self.reranker is None:
             raise ValueError("reranker_enabled requires an injected reranker")
@@ -96,7 +100,7 @@ class ExperimentRunner:
                 return completed
             raise FileExistsError(f"Experiment result already exists: {path}")
         timestamp = datetime.fromisoformat(saved['timestamp']) if saved else datetime.now(timezone.utc)
-        retriever = self.retrievers[config.retrieval_strategy]
+        retriever = None if baseline else self.retrievers[config.retrieval_strategy]
         limit = max(config.candidate_k, config.top_k) if config.reranker_enabled else config.top_k
         searches = {
             "dense": lambda query: retriever.search_text(query, top_k=limit),
@@ -124,10 +128,10 @@ class ExperimentRunner:
             wait_before = excluded_wait_ms() if excluded_wait_ms is not None else 0.0
             started = perf_counter()
             rewritten = self.query_rewriter.rewrite_query(item.question) if config.query_rewrite_enabled else None
-            chunks = searches[config.retrieval_strategy](rewritten if rewritten is not None else item.question)
+            chunks = [] if baseline else searches[config.retrieval_strategy](rewritten if rewritten is not None else item.question)
             if config.reranker_enabled:
                 chunks = self.reranker.rerank(rewritten if rewritten is not None else item.question, chunks, top_k=config.top_k)
-            generation = self.generator.generate_from_chunks(item.question, chunks)
+            generation = generate_llm_only(self.generator.llm, item.question) if baseline else self.generator.generate_from_chunks(item.question, chunks)
             latency = (perf_counter() - started) * 1000
             if excluded_wait_ms is not None:
                 latency = max(generation.latency_ms, latency - (excluded_wait_ms() - wait_before))
@@ -136,19 +140,23 @@ class ExperimentRunner:
             questions.append(QuestionExperimentResult(
                 question_id=item.question_id, original_question=item.question, rewritten_query=rewritten,
                 retrieved_chunk_ids=ids, generation=generation, latency_ms=latency,
-                recall_at_k={k: recall_at_k(relevant, ids, k) for k in config.recall_k_values},
-                reciprocal_rank=reciprocal_rank(relevant, ids),
+                recall_at_k={k: None if baseline else recall_at_k(relevant, ids, k) for k in config.recall_k_values},
+                reciprocal_rank=None if baseline else reciprocal_rank(relevant, ids),
                 correctness=self.correctness.evaluate_benchmark_item(item, generation.answer),
-                groundedness=self.groundedness.evaluate(item.question, generation.answer, chunks),
-                citation_accuracy=self.citation_accuracy.evaluate(generation.answer, generation.citations, chunks),
-                hallucination_refusal=self.hallucination_refusal.evaluate(item.answerable, generation.answer, chunks),
+                groundedness=None if baseline else self.groundedness.evaluate(item.question, generation.answer, chunks),
+                citation_accuracy=CitationAccuracyResult(
+                    score=None, label="not_applicable", skipped=True,
+                    reason="LLM-only uses no retrieved citations.",
+                    valid_citations=0, invalid_citations=0, total_citations=0,
+                ) if baseline else self.citation_accuracy.evaluate(generation.answer, generation.citations, chunks),
+                hallucination_refusal=evaluate_refusal_only(item.answerable, generation.answer) if baseline else self.hallucination_refusal.evaluate(item.answerable, generation.answer, chunks),
             ))
             persist_checkpoint()
         summary = ExperimentSummary(
             evaluated_question_count=len(questions),
-            retrieval=evaluate_retrieval(items, {q.question_id: q.retrieved_chunk_ids for q in questions}, config.recall_k_values),
+            retrieval=RetrievalMetrics(0, len(questions), {k: None for k in config.recall_k_values}, None) if baseline else evaluate_retrieval(items, {q.question_id: q.retrieved_chunk_ids for q in questions}, config.recall_k_values),
             correctness=summarize_correctness(q.correctness for q in questions),
-            groundedness=summarize_groundedness(q.groundedness for q in questions),
+            groundedness=summarize_groundedness(q.groundedness for q in questions if q.groundedness is not None),
             citation_accuracy=summarize_citation_accuracy(q.citation_accuracy for q in questions),
             hallucination_refusal=summarize_hallucination_refusal(q.hallucination_refusal for q in questions),
             average_latency_ms=sum(q.latency_ms for q in questions) / len(questions) if questions else None,

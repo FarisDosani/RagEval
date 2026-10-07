@@ -44,3 +44,5 @@ backend/results/phase25/*/replays/
 backend/results/phase25/*/compatibility.json
 backend/results/phase25/checkpoints/
 backend/results/phase25/pacing.json
+
+backend/data/uploads/

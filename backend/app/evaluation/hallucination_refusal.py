@@ -11,7 +11,7 @@ from app.schemas.retrieval import RetrievalResult
 
 BehaviorLabel = Literal[
     "supported_answer", "hallucinated_answer", "correct_refusal",
-    "incorrect_refusal", "failed_refusal",
+    "incorrect_refusal", "failed_refusal", "unassessed_answer",
 ]
 _LABELS = ("supported_answer", "hallucinated_answer", "correct_refusal", "incorrect_refusal", "failed_refusal")
 
@@ -69,7 +69,7 @@ class HallucinationRefusalResult(BaseModel):
         if not self.reason.strip() or any(not claim.strip() for claim in self.unsupported_claims):
             raise ValueError("reason and unsupported claims must not be blank")
         expected = {
-            "supported_answer": (False, False), "hallucinated_answer": (True, False),
+            "unassessed_answer": (None, False), "supported_answer": (False, False), "hallucinated_answer": (True, False),
             "correct_refusal": (False, True), "incorrect_refusal": (False, True),
         }
         if self.label in expected and (self.hallucinated, self.refused) != expected[self.label]:
@@ -79,6 +79,22 @@ class HallucinationRefusalResult(BaseModel):
         if (self.hallucinated is True) != bool(self.unsupported_claims):
             raise ValueError("unsupported_claims must agree with hallucinated")
         return self
+
+
+def evaluate_refusal_only(answerable: bool, generated_answer: str) -> HallucinationRefusalResult:
+    """LLM-only benchmark behavior; absence of retrieval is not a support failure."""
+    if not isinstance(answerable, bool):
+        raise ValueError("answerable must be a boolean")
+    if not isinstance(generated_answer, str) or not generated_answer.strip():
+        raise ValueError("generated_answer must be a non-empty string")
+    refused = generated_answer.strip() == INSUFFICIENT_INFORMATION
+    label = ("incorrect_refusal" if answerable else "correct_refusal") if refused else (
+        "unassessed_answer" if answerable else "failed_refusal")
+    return HallucinationRefusalResult(
+        label=label, hallucinated=False if refused else None, refused=refused,
+        reason="Exact-refusal behavior only; retrieved-evidence support is not applicable to LLM-only.",
+        unsupported_claims=[],
+    )
 
 
 def _unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
@@ -164,6 +180,7 @@ class HallucinationRefusalSummary:
     failed_refusal_rate: float | None
     unnecessary_refusal_rate: float | None
     label_counts: dict[BehaviorLabel, int]
+    support_unassessed_count: int = 0  # Substantive answerable responses excluded from support judging.
 
 
 def summarize_hallucination_refusal(
@@ -171,23 +188,26 @@ def summarize_hallucination_refusal(
 ) -> HallucinationRefusalSummary:
     """Rates use explicit populations, returning None for zero denominators.
 
-    Hallucination: hallucinated answers / substantive answerable responses.
+    Hallucination: hallucinated answers / support-assessed substantive answerable
+    responses. LLM-only unassessed answers count toward refusal denominators only.
     Correct/failed refusal: corresponding label / all unanswerable items.
     Unnecessary refusal: incorrect refusals / all answerable items.
     Failed refusals never enter the answerable hallucination denominator.
     """
     counts = dict.fromkeys(_LABELS, 0)
     for result in results:
-        counts[result.label] += 1
-    substantive = counts["supported_answer"] + counts["hallucinated_answer"]
+        counts[result.label] = counts.get(result.label, 0) + 1
+    assessed = counts["supported_answer"] + counts["hallucinated_answer"]
+    unassessed = counts.get("unassessed_answer", 0)
+    substantive = assessed + unassessed
     answerable = substantive + counts["incorrect_refusal"]
     unanswerable = counts["correct_refusal"] + counts["failed_refusal"]
     return HallucinationRefusalSummary(
         total_evaluated=sum(counts.values()), substantive_answerable_count=substantive,
         answerable_count=answerable, unanswerable_count=unanswerable,
-        hallucination_rate=counts["hallucinated_answer"] / substantive if substantive else None,
+        hallucination_rate=counts["hallucinated_answer"] / assessed if assessed else None,
         correct_refusal_rate=counts["correct_refusal"] / unanswerable if unanswerable else None,
         failed_refusal_rate=counts["failed_refusal"] / unanswerable if unanswerable else None,
         unnecessary_refusal_rate=counts["incorrect_refusal"] / answerable if answerable else None,
-        label_counts=counts,
+        label_counts=counts, support_unassessed_count=unassessed,
     )

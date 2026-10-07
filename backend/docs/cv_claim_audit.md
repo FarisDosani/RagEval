@@ -259,10 +259,10 @@ establishes general superiority, measured monetary savings, or a deployed servic
 - Infrastructure only: User interface.
 - Limitation: No browser E2E suite or authentication; execution forms need configured backend services.
 
-## LLM-only baseline (unsupported claim)
+## LLM-only baseline
 
-- Implemented: no dedicated baseline in the current ExperimentRunner/config.
-- Tested: standalone LLM service is tested; an LLM-only experiment baseline is not.
-- Demonstrated in real run: no.
-- Infrastructure only: standalone text generation exists, but is not a baseline workflow.
-- Limitation: do not list LLM-only baseline support as completed. It remains future work.
+- Implemented: yes. Source: app/generation/llm_only.py, API query routing, and ExperimentRunner/config.
+- Tested: tests/test_llm_only.py; frontend baseline rendering/request checks, lint and build.
+- Demonstrated in real run: no; preserved research results were not rerun.
+- Infrastructure only: first-class direct-model query/experiment/comparison strategy.
+- Limitation: claim implemented/tested baseline support, not measured improvements over LLM-only. Retrieval, groundedness, citation and support metrics are N/A; correctness and benchmark refusal behavior remain applicable.

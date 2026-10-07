@@ -6,6 +6,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.api.routes import router
+from app.api.documents import router as documents_router
 from app.generation.llm_service import LLMError
 
 
@@ -19,6 +20,7 @@ def create_app(*, pipeline=None, experiment_runner=None, results_dir: str | Path
         # Explicit injection always wins, including intentionally partial setups.
         if enabled and pipeline is None and experiment_runner is None:
             runtime = build_runtime()
+            app.state.runtime = runtime
             app.state.pipeline = runtime.pipeline
             app.state.experiment_runner = runtime.experiment_runner
         try:
@@ -26,10 +28,12 @@ def create_app(*, pipeline=None, experiment_runner=None, results_dir: str | Path
         finally:
             if runtime is not None:
                 runtime.close()
+                app.state.runtime = None
                 app.state.pipeline = None
                 app.state.experiment_runner = None
 
     app = FastAPI(title="RAGEval", description="Evaluation framework for Retrieval-Augmented Generation systems", version="0.1.0", lifespan=lifespan)
+    app.state.runtime = None
     app.state.pipeline = pipeline
     app.state.experiment_runner = experiment_runner
     app.state.results_dir = Path(results_dir) if results_dir is not None else Path(__file__).resolve().parents[1] / "results"
@@ -60,6 +64,7 @@ def create_app(*, pipeline=None, experiment_runner=None, results_dir: str | Path
         return {"status": "healthy"}
 
     app.include_router(router)
+    app.include_router(documents_router)
     return app
 
 

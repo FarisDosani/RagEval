@@ -3,7 +3,11 @@ import hashlib
 import logging
 import os
 from dataclasses import dataclass
+from copy import copy
+from threading import Lock
 from pathlib import Path
+
+from app.schemas.runtime import DocumentInfo
 
 from app.embeddings.embedding_service import EmbeddingService
 from app.ingestion.loaders import load_document
@@ -34,10 +38,57 @@ class DenseRetriever:
         return self.store.search_text(query, top_k=top_k, service=self.embeddings)
 
 
-@dataclass
-class RuntimeServices:
+@dataclass(frozen=True)
+class RuntimeSnapshot:
     pipeline: RAGPipeline
     experiment_runner: ExperimentRunner
+    documents: tuple[DocumentInfo, ...]
+    embedded: tuple
+
+
+class RuntimeServices:
+    """Publish complete snapshots; failed rebuilds leave the old corpus usable."""
+    def __init__(self, pipeline, experiment_runner, documents, embedded):
+        self.snapshot = RuntimeSnapshot(pipeline, experiment_runner, tuple(documents), tuple(embedded))
+        self._rebuild_lock = Lock()
+
+    @property
+    def pipeline(self):
+        return self.snapshot.pipeline
+
+    @property
+    def experiment_runner(self):
+        return self.snapshot.experiment_runner
+
+    def add_document(self, path):
+        with self._rebuild_lock:
+            old = self.snapshot
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            identifier = digest + "_s512_o50"
+            for document in old.documents:
+                if document.document_id == identifier:
+                    return document  # Identical bytes are already indexed.
+            try:
+                units = load_document(path)
+            except Exception as exc:
+                raise ValueError("Document could not be parsed") from exc
+            chunks = chunk_document([u.model_copy(update={"document_id": identifier}) for u in units], 512, 50)
+            if not chunks:
+                raise ValueError("Document has no extractable text")
+            embeddings = old.pipeline.embedding_service
+            embedded = (*old.embedded, *embeddings.embed_chunks(chunks))
+            store = VectorStore(embedded)
+            dense = DenseRetriever(store, embeddings)
+            bm25 = BM25Retriever(embedded)
+            pipeline = RAGPipeline(store, old.pipeline.llm, embeddings)
+            runner = copy(old.experiment_runner)
+            runner.generator = pipeline
+            runner.retrievers = {"dense": dense, "bm25": bm25, "hybrid": HybridRetriever(dense, bm25)}
+            document = DocumentInfo(document_id=identifier, name=path.name,
+                                    extracted_unit_count=len(units), chunk_count=len(chunks))
+            self.snapshot = RuntimeSnapshot(pipeline, runner, (*old.documents, document), embedded)
+            logger.info("Runtime corpus rebuilt: %d documents, %d chunks", len(self.snapshot.documents), len(embedded))
+            return document
 
     def close(self):
         self.pipeline.llm.close()
@@ -66,7 +117,8 @@ def build_runtime():
     llm = LLMService()
     try:
         embeddings = EmbeddingService()
-        store = VectorStore(embeddings.embed_chunks(chunks))
+        embedded = embeddings.embed_chunks(chunks)
+        store = VectorStore(embedded)
         dense = DenseRetriever(store, embeddings)
         bm25 = BM25Retriever(chunks)
         hybrid = HybridRetriever(dense, bm25)
@@ -79,7 +131,9 @@ def build_runtime():
             reranker=CrossEncoderReranker(), query_rewriter=QueryRewriter(llm),
         )
         logger.info("Research services ready: provider=%s model=%s", llm.provider, llm.model)
-        return RuntimeServices(pipeline, runner)
+        return RuntimeServices(pipeline, runner, [DocumentInfo(
+            document_id=digest + "_s512_o50", name=path.name,
+            extracted_unit_count=len(units), chunk_count=len(chunks))], embedded)
     except Exception:
         llm.close()
         raise

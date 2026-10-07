@@ -1,4 +1,5 @@
 from pathlib import Path
+from time import perf_counter
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, Request
@@ -9,7 +10,8 @@ from app.experiments.comparison_runner import ComparisonResult, ComparisonRunner
 from app.experiments.models import ExperimentConfig, ExperimentResult, Name, PositiveInt
 from app.experiments.sweep_runner import SweepResult, SweepRunner, SweepType
 from app.schemas.benchmark import BenchmarkItem
-from app.schemas.generation import RAGResponse
+from app.generation.llm_only import generate_llm_only
+from app.schemas.runtime import QueryResponse, RetrievalStrategy
 
 router = APIRouter()
 
@@ -21,6 +23,7 @@ class APIRequest(BaseModel):
 class QueryRequest(APIRequest):
     question: Name
     top_k: PositiveInt = 5
+    retrieval_strategy: RetrievalStrategy = "hybrid"
 
 
 class ExperimentRequest(APIRequest):
@@ -45,7 +48,9 @@ class AnalysisRequest(APIRequest):
 
 
 def service(request: Request, name: str):
-    value = getattr(request.app.state, name, None)
+    runtime = getattr(request.app.state, "runtime", None)
+    owner = runtime.snapshot if runtime is not None else request.app.state
+    value = getattr(owner, name, None)
     if value is None:
         raise HTTPException(503, "Research service is not configured; supply prebuilt components through create_app.")
     return value
@@ -75,9 +80,32 @@ def read_result(request: Request, kind: str, identifier: UUID, model):
         raise HTTPException(500, "Saved result is invalid") from None
 
 
-@router.post("/query", response_model=RAGResponse)
+@router.post("/query", response_model=QueryResponse)
 def query(body: QueryRequest, request: Request):
-    return service(request, "pipeline").ask(body.question, top_k=body.top_k)
+    started = perf_counter()
+    runtime = getattr(request.app.state, "runtime", None)
+    owner = runtime.snapshot if runtime is not None else request.app.state
+    pipeline, runner = owner.pipeline, owner.experiment_runner
+    if body.retrieval_strategy == "llm_only":
+        if pipeline is None:
+            raise HTTPException(503, "LLM service is not configured")
+        response = generate_llm_only(pipeline.llm, body.question)
+        return QueryResponse(**response.model_dump(), retrieval_strategy="llm_only")
+    if pipeline is None or runner is None:
+        raise HTTPException(503, "Research service is not configured; enable RAGEVAL_AUTO_INIT or inject pipeline and runner")
+    retriever = runner.retrievers.get(body.retrieval_strategy)
+    if retriever is None:
+        raise HTTPException(503, "Selected retrieval strategy is not configured")
+    if body.retrieval_strategy == "dense":
+        chunks = retriever.search_text(body.question, top_k=body.top_k)
+    elif body.retrieval_strategy == "bm25":
+        chunks = retriever.search(body.question, top_k=body.top_k)
+    else:
+        chunks = retriever.search(body.question, candidate_k=max(20, body.top_k), final_top_k=body.top_k)
+    response = pipeline.generate_from_chunks(body.question, chunks)
+    return QueryResponse(**response.model_dump(exclude={"latency_ms"}),
+                         latency_ms=(perf_counter() - started) * 1000,
+                         retrieval_strategy=body.retrieval_strategy)
 
 
 @router.post("/experiments/run", response_model=ExperimentResult)

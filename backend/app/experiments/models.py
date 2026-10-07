@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 from app.schemas.benchmark import BenchmarkItem
 from app.schemas.generation import RAGResponse
@@ -19,7 +19,7 @@ PositiveInt = Annotated[int, Field(strict=True, gt=0)]
 class ExperimentConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     experiment_name: Name
-    retrieval_strategy: Literal["dense", "bm25", "hybrid"]
+    retrieval_strategy: Literal["dense", "bm25", "hybrid", "llm_only"]
     top_k: PositiveInt = 5
     candidate_k: PositiveInt = 20
     reranker_enabled: bool = Field(default=False, strict=True)
@@ -31,6 +31,13 @@ class ExperimentConfig(BaseModel):
     component_metadata: dict[str, str] = Field(default_factory=dict)
 
 
+    @model_validator(mode="after")
+    def baseline_modifiers(self):
+        if self.retrieval_strategy == "llm_only" and (self.reranker_enabled or self.query_rewrite_enabled):
+            raise ValueError("llm_only cannot use retrieval reranking or query rewriting")
+        return self
+
+
 class QuestionExperimentResult(BaseModel):
     question_id: str
     original_question: str
@@ -40,7 +47,7 @@ class QuestionExperimentResult(BaseModel):
     recall_at_k: dict[int, float | None]
     reciprocal_rank: float | None
     correctness: CorrectnessResult | None
-    groundedness: GroundednessResult
+    groundedness: GroundednessResult | None
     citation_accuracy: CitationAccuracyResult
     hallucination_refusal: HallucinationRefusalResult
     latency_ms: float = Field(ge=0)  # Rewrite + retrieval + rerank + generation; excludes judges.

@@ -29,9 +29,9 @@ metric denominators and unavailable values when comparing results.
 - FastAPI endpoints, a Next.js dashboard, and a backend Docker image definition.
 
 Reranking, rewriting, and generation-based sweeps are implemented and tested but
-were not evaluated in the final real study. A dedicated **LLM-only experiment
-baseline is not implemented**: `ExperimentConfig` accepts dense/BM25/hybrid.
-Calling the standalone LLM service is not equivalent to having that baseline.
+were not evaluated in the final real study. A first-class **LLM-only baseline**
+is also implemented and tested for queries, experiments, and comparisons; it has
+not been evaluated in the retained real study.
 
 ## Architecture
 
@@ -130,10 +130,11 @@ Use `LLM_PROVIDER=gemini`, `GEMINI_MODEL=gemini-3.5-flash-lite`, and your
 `data/corpus/Week # 02 Slides.pdf`; relative paths resolve against `backend/`.
 
 Startup extracts the document, chunks at 512 words / 50 overlap, embeds and builds
-FAISS/BM25/hybrid once per worker. `/query` uses dense retrieval. Experiments share
+FAISS/BM25/hybrid once per worker. `/query` defaults to hybrid and also supports
+dense and BM25 selection. Experiments share
 these indexes and the configured model; use matching model/chunk settings and
 benchmark relevance IDs. Reranker weights remain lazy. Reloads/new workers rebuild;
-requests do not. Startup fails clearly for invalid configuration or empty corpus.
+queries do not. Successful uploads rebuild indexes for the updated corpus. Startup fails clearly for invalid configuration or empty corpus.
 Existing artifacts are neither rewritten nor experiments executed at startup.
 
 Or use the interpreter directly, with the same process environment:
@@ -166,6 +167,7 @@ comparison ID below in the Comparisons page to inspect saved real results.
 There is no authentication or database.
 
 ```powershell
+node --test tests/llm-only.test.mjs
 npm run lint
 npm run build
 npm run start
@@ -173,6 +175,83 @@ npm run start
 
 Dependencies and generated output are ignored by Git; install and build locally
 as needed.
+
+## Upload and query demo
+
+1. Start the backend with `RAGEVAL_AUTO_INIT=true` as shown above.
+2. Start the frontend and open its Query page.
+3. In Documents / Corpus, upload a PDF, UTF-8 TXT, or DOCX file.
+4. Wait for indexing to finish; confirm the document's extracted-unit/chunk counts.
+5. Choose Dense, BM25, or Hybrid (default), and select top-k; or choose LLM Only
+   to bypass retrieval (top-k is ignored).
+6. Ask a question and inspect the answer, ranked evidence, citations, and usage.
+
+Uploads **add** to the configured startup corpus; they do not replace repository
+files. The backend reuses its loaded embedding service, embeds only new content,
+and builds fresh FAISS/BM25/hybrid indexes before an atomic snapshot swap. A failed
+upload leaves the previous corpus usable. In-flight requests retain their snapshot;
+subsequent queries and experiment requests use the updated corpus. Identical file
+contents are deduplicated in the index. No LLM calls occur during indexing.
+
+Use a **single backend worker** for this local demo: each process has its own corpus.
+Uploads are stored in ignored `backend/data/uploads/<random-id>/` folders. The
+indexed session resets on restart/reload; stored files are not automatically
+re-indexed. Document deletion is not exposed in this phase. Keep benchmark runs on
+their original corpus and matching relevance IDs; demo uploads change the corpus.
+
+API:
+- `GET /documents` lists indexed document metadata (including the startup document).
+- `POST /documents/upload?filename=notes.txt` accepts **raw file bytes**, with
+  `Content-Type: application/octet-stream` (not multipart form data). The filename
+  must be a name, never a path. Supported extensions: `.pdf`, `.txt`, `.docx`.
+- `POST /query` accepts `question`, `top_k`, and `retrieval_strategy`:
+  `dense`, `bm25`, `hybrid`, or `llm_only`. Response includes the selected strategy and existing
+  answer/evidence/citation/latency/usage fields. Scores are method-specific and
+  should not be compared between retrieval strategies.
+
+The default upload size limit is **10 MiB**. Set process environment variable
+`RAGEVAL_MAX_UPLOAD_BYTES` to change it; any reverse-proxy body limit must also
+allow that size. Unsupported, empty, unparseable, and text-empty documents return
+400; oversized files return 413. Images/scans without extractable text require OCR
+outside this application. For Docker uploads, mount a writable `/app/data/uploads`
+directory if uploaded files should persist outside the container.
+
+## LLM-only baseline
+
+LLM-only measures model performance without retrieval, giving a baseline for
+measuring whether RAG improves performance. Use `retrieval_strategy: "llm_only"`
+in `/query` or an `ExperimentConfig`. The original question goes directly to the
+existing LLMService with a concise own-knowledge prompt. No corpus text, retrieval,
+query embedding, or index lookup occurs in this path. Evidence and citations are
+empty; model, latency, tokens, and provider cost are preserved.
+
+The Query page offers **LLM Only**, disables top-k, and shows **No retrieval used**.
+Top-k remains a positive config field for compatibility but is ignored by this
+strategy. Retrieval rewriting and reranking are rejected for LLM-only experiments.
+Normal local auto-init still prepares corpus services for the other strategies;
+an injected LLM-backed pipeline can serve LLM-only queries without any retrievers.
+
+Evaluation applicability:
+- Answer correctness remains applicable to answerable benchmark items.
+- Exact-refusal behavior remains applicable under the benchmark's existing
+  answerable/unanswerable labels; it does not assess general-world answerability.
+- Recall@K and MRR are `null`, with zero evaluated retrieval questions and all
+  questions counted as skipped.
+- Per-question groundedness is `null`, with no groundedness judge call and no
+  evaluated groundedness items. Citation accuracy is explicitly skipped with
+  `score: null`; aggregate evidence metrics remain `null`, never fabricated zeroes.
+- Evidence-based hallucination judges are not called. Substantive answerable
+  responses use `unassessed_answer`, `hallucinated: null`, and contribute to
+  `support_unassessed_count`. Substantive unanswerable responses retain
+  `failed_refusal` with support unassessed. Hallucination rate is `null` for this
+  baseline; refusal rates retain explicit benchmark denominators.
+- Comparisons preserve N/A metrics. Failure analysis never assigns retrieval misses
+  or low ranks to LLM-only; correctness and refusal failures still apply.
+
+The existing RAG prompts and evaluation rules are unchanged. The baseline prompt
+allows model knowledge and requests the same exact refusal text when the model
+cannot answer reliably. Baseline infrastructure is tested with mocked providers;
+no LLM-only real-study result is claimed, and no published results were rerun.
 
 ## Docker
 
@@ -299,7 +378,7 @@ exact stochastic LLM outputs are not guaranteed. Run one paced executor at a tim
 ## Future Work
 
 Larger corpora/benchmarks; independent human or alternative-model judging;
-controlled provider/model comparisons; a dedicated LLM-only baseline; meaningful
+controlled provider/model comparisons; real LLM-only baseline measurements; meaningful
 chunk-size studies; repeated runs and statistical confidence estimates.
 
 See [CV claim audit](backend/docs/cv_claim_audit.md) for claim-by-claim evidence and
